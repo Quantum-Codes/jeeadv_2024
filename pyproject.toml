@@ -8,6 +8,8 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 pypdf2 = "^3.0.1"
+mysql-connector-python = "^9.3.0"
+python-dotenv = "^1.1.0"
 
 
 [build-system]
