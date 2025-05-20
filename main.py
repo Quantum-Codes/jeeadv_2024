@@ -33,6 +33,7 @@ number_of_pages = len(reader.pages)
 # Roll vs CRL
 page_nos = range(200, 212) # until and including AAT text
 page_content = []
+aat_page_content = []
 headers = [] # to make all table headers appear only once. 
 aat = 0 # aat switch, if currently viewing aat then its 1
 prep = 0 # prep switch, if currently viewing prep then its 1. cuz prepcourse ranks are joined with roll numbers
@@ -81,10 +82,13 @@ for i in page_nos:
             continue
         
         # handle AAT roll numbers
-        if "AAT" in line or aat == 1:
+        if "AAT" in line: #header no = AAT candidate
             aat = 1
-            break 
+            prep = 0
+            content[line_no] = "deleted"
+            continue
         
+
         if "Roll" in line:
             if "NoPREP-" in line: # malformed line group
                 prep = 1
@@ -145,7 +149,21 @@ for i in page_nos:
 
 print("\n".join(page_content))
 
-
+categories = []
+for line in page_content:
+    if line[0].isalpha() and not line == "No":
+        categories.append(line)
+        continue
+    
+    if line == "No":
+        break
+    
+    # CHANGE THIS
+    line = line.split(" ")
+    if categories[-1] == "CRL":
+        sql.execute("INSERT INTO data (CRL, roll, cat_rank) VALUES (%s, %s, %s);", (line[0], line[1], line[0]))
+        continue
+    sql.execute("INSERT INTO data (cat_rank, marks) VALUES (%s, %s);", (line[0], line[1]))
 
 # CRL vs Marks
 # page_nos = range(18, 21)
