@@ -31,39 +31,39 @@ number_of_pages = len(reader.pages)
 
 
 # Roll vs CRL
-page_nos = range(200, 212) # until and including AAT text
+page_nos = range(53, 212) # until and including AAT text
 page_content = []
 aat_page_content = []
 headers = [] # to make all table headers appear only once. 
 aat = 0 # aat switch, if currently viewing aat then its 1
 prep = 0 # prep switch, if currently viewing prep then its 1. cuz prepcourse ranks are joined with roll numbers
-"""
-noise appear only for PREP courses as:
-(All these inconsistent entries start with line "Roll NoPREP-" and continue till the first numeric entry)
-Roll NoPREP-
-OBC-
-PwDRoll NoPREP-
-OBC-
-PwDRoll NoPREP-
-OBC-
-PwDRoll NoPREP-
-OBC-
-PwDRoll NoPREP-
-OBC-
-PwDRoll NoPREP-
-OBC-
-PwD
 
-or
+# noise appear only for PREP courses as:
+# (All these inconsistent entries start with line "Roll NoPREP-" and continue till the first numeric entry)
+# Roll NoPREP-
+# OBC-
+# PwDRoll NoPREP-
+# OBC-
+# PwDRoll NoPREP-
+# OBC-
+# PwDRoll NoPREP-
+# OBC-
+# PwDRoll NoPREP-
+# OBC-
+# PwDRoll NoPREP-
+# OBC-
+# PwD
 
-Roll NoPREP-
-SC-PwDRoll NoPREP-
-SC-PwDRoll NoPREP-
-SC-PwDRoll NoPREP-
-SC-PwDRoll NoPREP-
-SC-PwDRoll NoPREP-
-SC-PwD
-"""
+# or
+
+# Roll NoPREP-
+# SC-PwDRoll NoPREP-
+# SC-PwDRoll NoPREP-
+# SC-PwDRoll NoPREP-
+# SC-PwDRoll NoPREP-
+# SC-PwDRoll NoPREP-
+# SC-PwD
+
 for i in page_nos:
     content = reader.pages[i].extract_text()
     content = content.split("\n")
@@ -92,14 +92,14 @@ for i in page_nos:
         if "Roll" in line:
             if "NoPREP-" in line: # malformed line group
                 prep = 1
-                next_line = line
+                tmp_line_no = line_no + 1
+                next_line = content[tmp_line_no]
                 malformed_lines = line # contains all malformed lines joined together in a single string
-                tmp_line_no = line_no
                 while not next_line[0].isnumeric(): # loop till a numeric entry is found
-                    tmp_line_no += 1
-                    next_line = content[tmp_line_no]
                     malformed_lines += next_line.strip() # remove newline
                     content[tmp_line_no] = "deleted"
+                    tmp_line_no += 1
+                    next_line = content[tmp_line_no]
                 # we have now deleted all malformed lines and put them in malformed_lines
                 # now we need to detect the category 
                 malformed_lines = malformed_lines.split(" ")
@@ -148,7 +148,6 @@ for i in page_nos:
     page_content.extend(content)
 
 print("\n".join(page_content))
-
 categories = []
 for line in page_content:
     if line[0].isalpha() and not line == "No":
@@ -156,14 +155,26 @@ for line in page_content:
         continue
     
     if line == "No":
-        break
-    
-    # CHANGE THIS
-    line = line.split(" ")
-    if categories[-1] == "CRL":
-        sql.execute("INSERT INTO data (CRL, roll, cat_rank) VALUES (%s, %s, %s);", (line[0], line[1], line[0]))
+        categories.append("AAT")
+        db.commit()
         continue
-    sql.execute("INSERT INTO data (cat_rank, marks) VALUES (%s, %s);", (line[0], line[1]))
+    
+    line = line.split(" ")
+    if categories[-1] != "AAT":
+        grouped = zip(line[0::2], line[1::2])
+        for item in grouped:
+            if categories[-1] == "CRL":
+                sql.execute("INSERT INTO data (CRL, roll, cat_rank, category) VALUES (%s, %s, %s, \"gen\");", (item[1], item[0], item[1]))
+                continue
+            else: 
+                # on duplicate is for some guys who already had a CRL and was misclassified as a gen
+                sql.execute("INSERT INTO data (roll, cat_rank, category) VALUES (%s, %s, %s) ON DUPLICATE KEY UPDATE cat_rank = %s, category = %s;", (item[0], item[1], categories[-1], item[1], categories[-1]))
+                continue
+            
+    else:
+        for item in line:
+            sql.execute("INSERT INTO data (roll, AAT_qualified) VALUES (%s, 1) ON DUPLICATE KEY UPDATE AAT_qualified = 1;", (item,))
+db.commit()
 
 # CRL vs Marks
 # page_nos = range(18, 21)
