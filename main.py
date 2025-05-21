@@ -29,7 +29,7 @@ reader = PdfReader("JIC 2024.pdf")
 number_of_pages = len(reader.pages)
 
 
-
+"""
 # Roll vs CRL
 page_nos = range(53, 212) # until and including AAT text
 page_content = []
@@ -175,49 +175,59 @@ for line in page_content:
         for item in line:
             sql.execute("INSERT INTO data (roll, AAT_qualified) VALUES (%s, 1) ON DUPLICATE KEY UPDATE AAT_qualified = 1;", (item,))
 db.commit()
+"""
 
 # CRL vs Marks
-# page_nos = range(18, 21)
-# page_content = []
-# headers = [] # to make all table headers appear only once
-# for i in page_nos:
-#     content = reader.pages[i].extract_text()
-#     content = content.split("\n")
-#     content.pop(0)
-#     content.pop(-1)
+page_nos = range(18, 21)
+page_content = []
+headers = [] # to make all table headers appear only once
+for i in page_nos:
+    content = reader.pages[i].extract_text()
+    content = content.split("\n")
+    content.pop(0)
+    content.pop(-1)
     
-#     for line_no, line in enumerate(content):
-#         if "Aggregate" in line:
-#             content[line_no] = "deleted"
-#             continue
+    for line_no, line in enumerate(content):
+        if "Aggregate" in line:
+            content[line_no] = "deleted"
+            continue
         
-#         for id, char in enumerate(line):
-#             if char.isalpha():
-#                 if id == 0:
-#                     if line in headers:
-#                         content[line_no] = "deleted"
-#                         break
-#                     headers.append(line)
-#                     break # normal table header line like 'CRL Score'
-#                 new_items = ( line[:id], line[id:] )
-#                 content[line_no] = new_items[0]
-#                 content.insert(line_no + 1, new_items[1])
-#                 break
+        for id, char in enumerate(line):
+            if char.isalpha():
+                if id == 0:
+                    if line in headers:
+                        content[line_no] = "deleted"
+                        break
+                    headers.append(line)
+                    break # normal table header line like 'CRL Score'
+                new_items = ( line[:id], line[id:] )
+                content[line_no] = new_items[0]
+                content.insert(line_no + 1, new_items[1])
+                break
                 
-#     for i in range(content.count("deleted")):
-#         content.remove("deleted")
-#     page_content.extend(content)
+    for i in range(content.count("deleted")):
+        content.remove("deleted")
+    page_content.extend(content)
 
-# categories = []
-# for line in page_content:
-#     if 'Score' in line:
-#         categories.append(line[:line.index(" ")])
-#         continue
+categories = []
+for line in page_content:
+    if 'Score' in line:
+        categories.append(line[:line.index(" ")].replace("-", "").strip()) # remove - to make CRL-PwD match CRLPwD
+        db.commit() # SAVE EACH CATEGORIES SCORE
+        continue
     
-#     line = line.split(" ")
-#     if categories[-1] == "CRL":
-#         sql.execute("INSERT INTO data (CRL, marks, cat_rank) VALUES (%s, %s, %s);", (line[0], line[1], line[0]))
-#         continue
-#     sql.execute("INSERT INTO data (cat_rank, marks) VALUES (%s, %s);", (line[0], line[1]))
+    line = line.split(" ")
+    if categories[-1] == "CRL":
+        sql.execute("UPDATE data SET marks = %s WHERE %s >= CRL AND CRL > %s - 100;", (line[1], line[0],line[0]))
+        
+        # this floor expression gives the lower marks to each guy in the 100 people bracket
+        continue
+    sql.execute("UPDATE data SET marks = %s WHERE %s >= cat_rank AND cat_rank > %s - 100 AND category = %s;", (line[1], line[0],line[0], categories[-1]))
+    # marks IS NOT NULL to give preference to CRL predicted marks as its brackets are more general. <-- This is what i thought but tbh it doesnt matter and good results were given without it also
+    # candidate where clause that sadly failed (cuz last rank not set properly) CEIL(cat_rank / 100) * 100 + 1 = %s
+    print(categories)
 
-# db.commit()
+# Turns out that the document is wrong at page 20 JIC report 2024. There is no column for EWS rank 5401. so we use the following query to fix:
+# UPDATE data SET marks = 98 WHERE 5333 >= cat_rank AND cat_rank >= 5302 AND category = "EWS" AND marks IS NULL AND CRL IS NULL;
+
+db.commit()
