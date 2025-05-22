@@ -176,7 +176,7 @@ for line in page_content:
             sql.execute("INSERT INTO data (roll, AAT_qualified) VALUES (%s, 1) ON DUPLICATE KEY UPDATE AAT_qualified = 1;", (item,))
 db.commit()
 """
-"""
+#"""
 # CRL vs Marks
 page_nos = range(18, 21)
 page_content = []
@@ -222,8 +222,8 @@ for line in page_content:
         
         # this floor expression gives the lower marks to each guy in the 100 people bracket
         continue
-    sql.execute("UPDATE data SET marks = %s WHERE %s >= cat_rank AND cat_rank > %s - 100 AND category = %s;", (line[1], line[0],line[0], categories[-1]))
-    # marks IS NOT NULL to give preference to CRL predicted marks as its brackets are more general. <-- This is what i thought but tbh it doesnt matter and good results were given without it also
+    sql.execute("UPDATE data SET marks = %s WHERE %s >= cat_rank AND cat_rank > %s - 100 AND category = %s AND CRL IS NULL;", (line[1], line[0],line[0], categories[-1]))
+    # CRL is null to give preference to CRL marks as they have more wide categories so should be more specific to each category
     # candidate where clause that sadly failed (cuz last rank not set properly) CEIL(cat_rank / 100) * 100 + 1 = %s
     print(categories)
 
@@ -232,7 +232,7 @@ for line in page_content:
 
 db.commit()
 #"""
-
+"""
 # the following data in json files were not scraped. just the table was copy pasted into chatgpt as text and converted to json
 with open("institutes.json", "r") as f:
     institutes = json.load(f)
@@ -246,27 +246,27 @@ page_nos = range(256, 451)
 page_content = []
 headers = [] # to make all table headers appear only once
 
-"""
-Theres malformation in this too.
-PwD of form (pure pwd, not prep pwd) (regular malformed lines):
-SC-PwD
-RankRollNo Inst.Code Br.CodeSC-PwD
-RankRollNo Inst.Code Br.Code
 
-So we remove next 2 lines.
+# Theres malformation in this too.
+# PwD of form (pure pwd, not prep pwd) (regular malformed lines):
+# SC-PwD
+# RankRollNo Inst.Code Br.CodeSC-PwD
+# RankRollNo Inst.Code Br.Code
 
-PREP form: (this is irregular unlike pure pwd, so need to detect)
-PREP-SC-
-PwD RankRollNo Inst.Code Br.CodePREP-SC-
-PwD RankRollNo Inst.Code Br.Code
+# So we remove next 2 lines.
 
-OR
+# PREP form: (this is irregular unlike pure pwd, so need to detect)
+# PREP-SC-
+# PwD RankRollNo Inst.Code Br.CodePREP-SC-
+# PwD RankRollNo Inst.Code Br.Code
 
-PREP-
-CRL-PwD
-RankRollNo Inst.Code Br.CodePREP-
-CRL-PwD
-"""
+# OR
+
+# PREP-
+# CRL-PwD
+# RankRollNo Inst.Code Br.CodePREP-
+# CRL-PwD
+
 
 for i in page_nos:
     content = reader.pages[i].extract_text()
@@ -356,3 +356,4 @@ for line in page_content:
     print(categories)
     
 db.commit()
+#"""
