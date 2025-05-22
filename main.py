@@ -241,7 +241,118 @@ with open("4year_branches.json", "r") as f:
 with open("5year_branches.json", "r") as f:
     year5_branches = json.load(f)
 
-print(len(institutes))
-print(len(year4_branches))
-print(len(year5_branches))
+# CRL vs Marks
+page_nos = range(256, 451)
+page_content = []
+headers = [] # to make all table headers appear only once
 
+"""
+Theres malformation in this too.
+PwD of form (pure pwd, not prep pwd) (regular malformed lines):
+SC-PwD
+RankRollNo Inst.Code Br.CodeSC-PwD
+RankRollNo Inst.Code Br.Code
+
+So we remove next 2 lines.
+
+PREP form: (this is irregular unlike pure pwd, so need to detect)
+PREP-SC-
+PwD RankRollNo Inst.Code Br.CodePREP-SC-
+PwD RankRollNo Inst.Code Br.Code
+
+OR
+
+PREP-
+CRL-PwD
+RankRollNo Inst.Code Br.CodePREP-
+CRL-PwD
+"""
+
+for i in page_nos:
+    content = reader.pages[i].extract_text()
+    content = content.split("\n")
+    content.pop(0)
+    content.pop(-1)
+    
+    if i == 256:
+        del content[0:2]
+    
+    for line_no, line in enumerate(content):
+        if line == "deleted":
+            continue
+        
+        if "Seat" in line:
+            content[line_no] = "deleted"
+            continue
+            
+        if line[0].isalpha():
+            line = line.split(" ")
+            
+            if "PREP" in line[0]: # malformed line group for prep courses
+                line = " ".join(line)
+                tmp_line_no = line_no + 1
+                next_line = content[tmp_line_no]
+                malformed_lines = line # contains all malformed lines joined together in a single string
+                while not next_line[0].isnumeric(): # loop till a numeric entry is found
+                    malformed_lines += next_line.strip() # remove newline
+                    content[tmp_line_no] = "deleted"
+                    tmp_line_no += 1
+                    next_line = content[tmp_line_no]
+                # we have now deleted all malformed lines and put them in malformed_lines
+                # now we need to detect the category 
+                malformed_lines = malformed_lines.split(" ")
+                if "Rank" in malformed_lines[0]:
+                    category = malformed_lines[0][:malformed_lines[0].find("Rank")] # category is first item. sometimes the Rank word from "PREP-CRL-PwDRank" combines like this. need to remove that
+                else:
+                    category = malformed_lines[0]
+                    
+                if category in headers:
+                    content[line_no] = "deleted"
+                    print(f"Duplicate header found: {category}")
+                    continue
+                
+                print(f"Header found: {category}")
+                headers.append(category)
+                continue
+            
+            if "PwD" in line[0]: # malformed line group for pure PwD
+                content[line_no + 1] = "deleted"
+                content[line_no + 2] = "deleted"
+                
+            if line[0] in headers:
+                content[line_no] = "deleted"
+                continue
+            headers.append(line[0])
+            content[line_no] = line[0]
+            print(f"Header found: {line[0]}")
+            continue
+        
+            
+    for i in range(content.count("deleted")):
+        content.remove("deleted")
+    page_content.extend(content)
+print(headers)
+
+categories = []
+# combine year4 and year5 branches in a single dict to make it easier to update
+branches = year4_branches
+branches.update(year5_branches)
+for line in page_content:
+    if line[0].isalpha():
+        if "PREP" not in line:
+            line = line.replace("-", "") # remove - to make CRL-PwD match CRLPwD but not remove dash from PREP courses
+        categories.append(line.strip()) 
+        db.commit() # SAVE EACH CATEGORIES SCORE
+        continue
+    
+    line = line.split(" ")
+    stud1 = line[:4]
+    stud2 = line[4:]
+    # here roll number is unique for every student so category rank or category is not required. so we can get away with the mistake we made when extracting category name since it wasnst needed anyway 
+    # first char of branch code is the year duration of the course.
+    sql.execute("UPDATE data SET institute = %s, programme = %s, program_duration = %s WHERE roll = %s ;", (institutes[stud1[2]],branches[stud1[3]],stud1[3][0],stud1[1]))
+    if len(stud2)>1: #no 2nd column
+        sql.execute("UPDATE data SET institute = %s, programme = %s, program_duration = %s WHERE roll = %s ;", (institutes[stud2[2]],branches[stud2[3]],stud2[3][0],stud2[1]))
+    print(categories)
+    
+db.commit()
