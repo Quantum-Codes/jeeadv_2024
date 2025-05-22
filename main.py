@@ -1,5 +1,5 @@
 from PyPDF2 import PdfReader
-import mysql.connector, dotenv, os
+import mysql.connector, dotenv, os, json
 
 """
 Table def:
@@ -176,7 +176,7 @@ for line in page_content:
             sql.execute("INSERT INTO data (roll, AAT_qualified) VALUES (%s, 1) ON DUPLICATE KEY UPDATE AAT_qualified = 1;", (item,))
 db.commit()
 """
-
+"""
 # CRL vs Marks
 page_nos = range(18, 21)
 page_content = []
@@ -231,3 +231,17 @@ for line in page_content:
 # UPDATE data SET marks = 98 WHERE 5333 >= cat_rank AND cat_rank >= 5302 AND category = "EWS" AND marks IS NULL AND CRL IS NULL;
 
 db.commit()
+#"""
+
+# the following data in json files were not scraped. just the table was copy pasted into chatgpt as text and converted to json
+with open("institutes.json", "r") as f:
+    institutes = json.load(f)
+with open("4year_branches.json", "r") as f:
+    year4_branches = json.load(f)
+with open("5year_branches.json", "r") as f:
+    year5_branches = json.load(f)
+
+print(len(institutes))
+print(len(year4_branches))
+print(len(year5_branches))
+
