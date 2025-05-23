@@ -5,12 +5,22 @@ import mysql.connector, dotenv, os, json
 Table def:
 CREATE TABLE data (
     roll INT PRIMARY KEY, 
-    CRL INT, marks INT, 
+    CRL INT,
+    marks INT, 
     category VARCHAR(20), 
     cat_rank INT, 
     institute VARCHAR(50), 
     programme VARCHAR(120),
-    AAT_qualified BOOL
+    AAT_qualified BOOL,
+    program_duration TINYINT
+);
+
+CREATE TABLE branches (
+    institute VARCHAR(50),
+    programme VARCHAR(120),
+    duration TINYINT,
+    chosen INT,
+    PRIMARY KEY (institute, programme, duration)
 );
 """
 
@@ -176,7 +186,7 @@ for line in page_content:
             sql.execute("INSERT INTO data (roll, AAT_qualified) VALUES (%s, 1) ON DUPLICATE KEY UPDATE AAT_qualified = 1;", (item,))
 db.commit()
 """
-#"""
+"""
 # CRL vs Marks
 page_nos = range(18, 21)
 page_content = []
@@ -356,4 +366,50 @@ for line in page_content:
     print(categories)
     
 db.commit()
+#"""
+#"""
+# choice count
+
+# take data of code - name
+with open("institutes.json", "r") as f:
+    institutes = json.load(f)
+with open("4year_branches.json", "r") as f:
+    year4_branches = json.load(f)
+with open("5year_branches.json", "r") as f:
+    year5_branches = json.load(f)
+    
+# branches consists of all branches
+branches = year4_branches
+branches.update(year5_branches)
+  
+page_nos = range(451, 454)
+page_content = []
+for i in page_nos:
+    content = reader.pages[i].extract_text()
+    content = content.split("\n")
+    content.pop(0)
+    content.pop(-1)
+    
+    if i==451:
+        content.pop(0)
+    
+    for line_no,line in enumerate(content):
+        if line[0].isalpha():
+            content[line_no] = "deleted"
+        elif "Inst" in line:
+            content[line_no] = line[0:line.find("I")].split(" ") # remove the text at the end of any entry (Inst. Code...)
+        else:
+            content[line_no] = line.split()
+            
+            
+            
+    for i in range(content.count("deleted")):
+        content.remove("deleted")
+    page_content.extend(content)
+
+        
+  
+for line in page_content:
+    print(line)
+    sql.execute("INSERT INTO branches (institute, programme, chosen, duration) VALUES (%s,%s,%s,%s);", (institutes[line[0]],branches[line[1]],int(line[2]),int(line[1][0])))
 #"""
