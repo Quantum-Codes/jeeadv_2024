@@ -412,4 +412,5 @@ for i in page_nos:
 for line in page_content:
     print(line)
     sql.execute("INSERT INTO branches (institute, programme, chosen, duration) VALUES (%s,%s,%s,%s);", (institutes[line[0]],branches[line[1]],int(line[2]),int(line[1][0])))
+db.commit()
 #"""
