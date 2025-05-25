@@ -1,299 +1,298 @@
-Institute,Branch,Course duration,Choice count
-IIT Bombay,Computer Science and Engineering,4,25481
-IIT Delhi,Computer Science and Engineering,4,25064
-IIT Kanpur,Computer Science and Engineering,4,24363
-IIT Roorkee,Computer Science and Engineering,4,24292
-IIT Kharagpur,Computer Science and Engineering,4,24280
-IIT Madras,Computer Science and Engineering,4,23741
-IIT Hyderabad,Computer Science and Engineering,4,23349
-IIT Roorkee,Electronics and Communication Engineering,4,22659
-IIT Guwahati,Computer Science and Engineering,4,22263
-IIT Delhi,Electrical Engineering,4,21855
-IIT Bombay,Electrical Engineering,4,21811
-IIT (BHU) Varanasi,Computer Science and Engineering,4,21199
-IIT Kanpur,Electrical Engineering,4,21199
-IIT Kharagpur,Artificial Intelligence,4,20915
-IIT Roorkee,Electrical Engineering,4,20810
-IIT Indore,Computer Science and Engineering,4,20763
-IIT Hyderabad,Artificial Intelligence,4,20682
-IIT Kharagpur,Electrical Engineering,4,20551
-IIT Roorkee,Data Science and Artificial Intelligence,4,20441
-IIT Guwahati,Electronics and Communication Engineering,4,20358
-IIT Madras,Electrical Engineering,4,20350
-IIT Madras,Artificial Intelligence and Data Analytics,4,20323
-IIT Kharagpur,Electronics and Electrical Communication Engineering,4,20193
-IIT Bombay,Mechanical Engineering,4,19469
-IIT Hyderabad,Electrical Engineering,4,19036
-IIT Delhi,Mechanical Engineering,4,19035
-IIT Gandhinagar,Computer Science and Engineering,4,18947
-IIT Delhi,Mathematics and Computing,4,18760
-IIT Guwahati,Data Science and Artificial Intelligence,4,18633
-IIT Kanpur,Mechanical Engineering,4,18612
-IIT Roorkee,Mechanical Engineering,4,18532
-IIT Kharagpur,Mechanical Engineering,4,18401
-IIT Madras,Mechanical Engineering,4,17922
-IIT (ISM) Dhanbad,Computer Science and Engineering,4,17390
-IIT Guwahati,Electronics and Electrical Engineering,4,17334
-IIT Bhubaneswar,Computer Science and Engineering,4,17105
-IIT (BHU) Varanasi,Electrical Engineering,4,17031
-IIT Hyderabad,Mathematics and Computing,4,16984
-IIT Hyderabad,Mechanical Engineering,4,16829
-IIT Indore,Electrical Engineering,4,16827
-IIT Mandi,Computer Science and Engineering,4,16569
-IIT Jodhpur,Computer Science and Engineering,4,16506
-IIT Guwahati,Mechanical Engineering,4,16489
-IIT Guwahati,Mathematics and Computing,4,16452
-IIT Ropar,Computer Science and Engineering,4,16326
-IIT Delhi,Electrical Engineering (Power and Automation),4,16226
-IIT Gandhinagar,Artificial Intelligence,4,16223
-IIT Delhi,Computer Science and Engineering,5,16188
-IIT Delhi,Chemical Engineering,4,15805
-IIT (BHU) Varanasi,Mechanical Engineering,4,15603
-IIT Patna,Computer Science and Engineering,4,15482
-IIT Bombay,Chemical Engineering,4,15430
-IIT Bombay,Aerospace Engineering,4,15174
-IIT Kharagpur,Chemical Engineering,4,15131
-IIT Delhi,Civil Engineering,4,15122
-IIT (BHU) Varanasi,Electronics Engineering,4,15103
-IIT Bombay,Civil Engineering,4,15061
-IIT Roorkee,Civil Engineering,4,15047
-IIT (ISM) Dhanbad,Electronics and Communication Engineering,4,15035
-IIT Roorkee,Chemical Engineering,4,15016
-IIT Indore,Mechanical Engineering,4,15001
-IIT Gandhinagar,Electrical Engineering,4,14835
-IIT Kanpur,Chemical Engineering,4,14817
-IIT Bhubaneswar,Electronics and Communication Engineering,4,14788
-IIT Hyderabad,Electrical Engineering (IC Design and Technology),4,14725
-IIT Indore,Mathematics and Computing,4,14659
-IIT Kanpur,Aerospace Engineering,4,14574
-IIT Kanpur,Civil Engineering,4,14563
-IIT Kharagpur,Civil Engineering,4,14397
-IIT Kharagpur,Mathematics and Computing,4,14318
-IIT Jodhpur,Artificial Intelligence and Data Science,4,14233
-IIT Kharagpur,Aerospace Engineering,4,14215
-IIT Madras,Aerospace Engineering,4,14165
-IIT Tirupati,Computer Science and Engineering,4,14048
-IIT (ISM) Dhanbad,Electrical Engineering,4,13959
-IIT Madras,Civil Engineering,4,13901
-IIT Madras,Chemical Engineering,4,13841
-IIT Bhubaneswar,Electrical Engineering,4,13791
-IIT Goa,Computer Science and Engineering,4,13765
-IIT Ropar,Artificial Intelligence and Data Engineering,4,13764
-IIT Delhi,Mathematics and Computing,5,13741
-IIT Jodhpur,Electrical Engineering,4,13629
-IIT Bombay,Electrical Engineering,5,13600
-IIT Gandhinagar,Mechanical Engineering,4,13553
-IIT Dharwad,Computer Science and Engineering,4,13517
-IIT Guwahati,Chemical Engineering,4,13437
-IIT Ropar,Electrical Engineering,4,13402
-IIT Kanpur,Mathematics and Scientific Computing,4,13390
-IIT Guwahati,Civil Engineering,4,13308
-IIT Patna,Artificial Intelligence and Data Science,4,13175
-IIT Mandi,Electrical Engineering,4,13139
-IIT (BHU) Varanasi,Computer Science and Engineering,5,13135
-IIT Patna,Electronics and Communication Engineering,4,13055
-IIT Hyderabad,Chemical Engineering,4,12955
-IIT Bhilai,Computer Science and Engineering,4,12925
-IIT Palakkad,Computer Science and Engineering,4,12851
-IIT Hyderabad,Computational Engineering,4,12787
-IIT (ISM) Dhanbad,Mechanical Engineering,4,12710
+IIT (BHU) Varanasi,Architecture,5,252
+IIT (BHU) Varanasi,Biochemical Engineering with M.Tech. in Biochemical Engineering and Biotechnology,5,5746
+IIT (BHU) Varanasi,Bioengineering with M.Tech in Biomedical Technology,5,5507
+IIT (BHU) Varanasi,Ceramic Engineering,4,7171
+IIT (BHU) Varanasi,Ceramic Engineering,5,5268
 IIT (BHU) Varanasi,Chemical Engineering,4,12691
-IIT Mandi,Data Science and Engineering,4,12676
-IIT Hyderabad,Civil Engineering,4,12637
-IIT Delhi,Engineering and Computational Mechanics,4,12598
-IIT Bhubaneswar,Mechanical Engineering,4,12467
-IIT (ISM) Dhanbad,Mathematics and Computing,4,12182
 IIT (BHU) Varanasi,Civil Engineering,4,12158
-IIT Jodhpur,Mechanical Engineering,4,12091
-IIT Indore,Chemical Engineering,4,11885
-IIT Gandhinagar,Computer Science and Engineering,5,11848
-IIT Indore,Civil Engineering,4,11839
-IIT Ropar,Mechanical Engineering,4,11811
-IIT Mandi,Mechanical Engineering,4,11810
-IIT Kanpur,Statistics and Data Science,4,11794
-IIT Bombay,Metallurgical Engineering and Materials Science,4,11513
-IIT Ropar,Mathematics and Computing,4,11493
-IIT Kharagpur,Metallurgical and Materials Engineering,4,11483
-IIT Patna,Electrical and Electronics Engineering,4,11400
-IIT Roorkee,Mathematics & Computing,5,11225
-IIT Mandi,B.Tech in Mathematics and Computing,4,11139
-IIT Roorkee,Metallurgical and Materials Engineering,4,11110
-IIT Tirupati,Electrical Engineering,4,11026
-IIT Patna,Mechanical Engineering,4,10989
+IIT (BHU) Varanasi,Civil Engineering,5,7207
+IIT (BHU) Varanasi,Computer Science and Engineering,4,21199
+IIT (BHU) Varanasi,Computer Science and Engineering,5,13135
+IIT (BHU) Varanasi,Electrical Engineering,4,17031
+IIT (BHU) Varanasi,Electrical Engineering with M.Tech. in Power Electronics,5,9281
+IIT (BHU) Varanasi,Electronics Engineering,4,15103
+IIT (BHU) Varanasi,Engineering Physics,5,6500
+IIT (BHU) Varanasi,Industrial Chemistry,5,5292
+IIT (BHU) Varanasi,Materials Science and Technology,5,6125
 IIT (BHU) Varanasi,Mathematics and Computing,5,10986
-IIT Delhi,Engineering Physics,4,10969
-IIT Dharwad,Electronics and Communication Engineering,4,10897
-IIT Goa,Electrical Engineering,4,10889
-IIT Patna,Mathematics and Computing,4,10741
-IIT Delhi,Energy Engineering,4,10723
+IIT (BHU) Varanasi,Mechanical Engineering,4,15603
+IIT (BHU) Varanasi,Mechanical Engineering,5,8486
+IIT (BHU) Varanasi,Metallurgical Engineering,4,9343
+IIT (BHU) Varanasi,Metallurgical Engineering,5,6330
+IIT (BHU) Varanasi,Mining Engineering,4,7697
+IIT (BHU) Varanasi,Mining Engineering,5,5620
+IIT (BHU) Varanasi,Pharmaceutical Engineering & Technology,4,6393
+IIT (BHU) Varanasi,Pharmaceutical Engineering & Technology,5,5077
+IIT (ISM) Dhanbad,Applied Geology,5,4917
+IIT (ISM) Dhanbad,Applied Geophysics,5,4980
+IIT (ISM) Dhanbad,Chemical Engineering,4,10288
+IIT (ISM) Dhanbad,Civil Engineering,4,10337
+IIT (ISM) Dhanbad,Computer Science and Engineering,4,17390
+IIT (ISM) Dhanbad,Electrical Engineering,4,13959
+IIT (ISM) Dhanbad,Electronics and Communication Engineering,4,15035
+IIT (ISM) Dhanbad,Engineering Physics,4,7443
+IIT (ISM) Dhanbad,Environmental Engineering,4,6491
+IIT (ISM) Dhanbad,Mathematics and Computing,4,12182
+IIT (ISM) Dhanbad,Mechanical Engineering,4,12710
+IIT (ISM) Dhanbad,Mineral and Metallurgical Engineering,4,7651
+IIT (ISM) Dhanbad,Mining Engineering,4,7668
+IIT (ISM) Dhanbad,Mining Machinery Engineering,4,7167
+IIT (ISM) Dhanbad,Petroleum Engineering,4,8056
+IIT Bhilai,Computer Science and Engineering,4,12925
 IIT Bhilai,Data Science and Artificial Intelligence,4,10637
-IIT Gandhinagar,Chemical Engineering,4,10599
+IIT Bhilai,Electrical Engineering,4,10141
+IIT Bhilai,Electronics and Communication Engineering,4,10285
+IIT Bhilai,Materials Science and Metallurgical Engineering,4,6346
+IIT Bhilai,Mechanical Engineering,4,9654
+IIT Bhilai,Mechatronics Engineering,4,7103
+IIT Bhubaneswar,Civil Engineering,4,10314
+IIT Bhubaneswar,Computer Science and Engineering,4,17105
+IIT Bhubaneswar,Electrical Engineering,4,13791
+IIT Bhubaneswar,Electronics and Communication Engineering,4,14788
+IIT Bhubaneswar,Engineering Physics,4,6878
+IIT Bhubaneswar,Mechanical Engineering,4,12467
+IIT Bhubaneswar,Metallurgical and Materials Engineering,4,8029
+IIT Bombay,Aerospace Engineering,4,15174
+IIT Bombay,BS in Mathematics,4,6954
+IIT Bombay,Chemical Engineering,4,15430
+IIT Bombay,Chemistry,4,6322
+IIT Bombay,Civil Engineering,4,15061
+IIT Bombay,Computer Science and Engineering,4,25481
+IIT Bombay,Economics,4,7090
+IIT Bombay,Electrical Engineering,4,21811
+IIT Bombay,Electrical Engineering,5,13600
 IIT Bombay,Energy Engineering,4,10588
 IIT Bombay,Engineering Physics,4,10513
-IIT Delhi,Production and Industrial Engineering,4,10492
-IIT Madras,Metallurgical and Materials Engineering,4,10485
-IIT Gandhinagar,Civil Engineering,4,10469
-IIT (ISM) Dhanbad,Civil Engineering,4,10337
-IIT Bhubaneswar,Civil Engineering,4,10314
-IIT (ISM) Dhanbad,Chemical Engineering,4,10288
-IIT Bhilai,Electronics and Communication Engineering,4,10285
-IIT Palakkad,Electrical Engineering,4,10173
-IIT Bhilai,Electrical Engineering,4,10141
-IIT Tirupati,Mechanical Engineering,4,10141
-IIT Palakkad,Data Science and Engineering,4,10134
-IIT Goa,Mechanical Engineering,4,10120
-IIT Kanpur,Materials Science and Engineering,4,10097
-IIT Delhi,Materials Engineering,4,10064
-IIT Jammu,Computer Science and Engineering,4,10012
-IIT Dharwad,Mechanical Engineering,4,10010
-IIT Dharwad,Electrical and Electronics Engineering,4,9998
-IIT Jodhpur,Chemical Engineering,4,9859
-IIT Roorkee,Engineering Physics,4,9857
-IIT Mandi,Civil Engineering,4,9761
-IIT Roorkee,Production and Industrial Engineering,4,9731
-IIT Bombay,Industrial Engineering and Operations Research,4,9718
-IIT Ropar,Chemical Engineering,4,9716
-IIT Goa,Mathematics and Computing,4,9711
-IIT Ropar,Civil Engineering,4,9693
-IIT Indore,Space Sciences and Engineering,4,9664
-IIT Bhilai,Mechanical Engineering,4,9654
-IIT Madras,Engineering Physics,4,9627
-IIT Guwahati,Chemical Science and Technology,4,9603
-IIT Kharagpur,Instrumentation Engineering,4,9593
-IIT Delhi,Biotechnology and Biochemical Engineering,4,9563
-IIT Palakkad,Mechanical Engineering,4,9534
-IIT Madras,Aerospace Engineering,5,9505
-IIT Patna,Civil Engineering,4,9439
-IIT Dharwad,Mathematics and Computing,4,9421
-IIT Guwahati,Engineering Physics,4,9404
-IIT (BHU) Varanasi,Metallurgical Engineering,4,9343
-IIT Roorkee,Energy Engineering,4,9283
-IIT (BHU) Varanasi,Electrical Engineering with M.Tech. in Power Electronics,5,9281
-IIT Guwahati,Energy Engineering,4,9238
-IIT Delhi,Chemical Engineering,5,9219
-IIT Hyderabad,Materials Science and Metallurgical Engineering,4,9189
-IIT Patna,Chemical Engineering,4,9127
-IIT Mandi,B.Tech in Microelectronics & VLSI,4,9090
-IIT Gandhinagar,Electrical Engineering,5,9031
-IIT Hyderabad,Engineering Physics,4,9014
 IIT Bombay,Environmental Science and Engineering,4,9002
-IIT Indore,Metallurgical Engineering and Materials Science,4,8995
-IIT Kharagpur,Industrial and Systems Engineering,4,8956
-IIT Kharagpur,Manufacturing Science and Engineering,4,8911
-IIT Kharagpur,Biotechnology and Biochemical Engineering,4,8869
+IIT Bombay,Industrial Engineering and Operations Research,4,9718
+IIT Bombay,Mechanical Engineering,4,19469
+IIT Bombay,Metallurgical Engineering and Materials Science,4,11513
+IIT Delhi,Biotechnology and Biochemical Engineering,4,9563
+IIT Delhi,Chemical Engineering,4,15805
+IIT Delhi,Chemical Engineering,5,9219
+IIT Delhi,Civil Engineering,4,15122
+IIT Delhi,Computer Science and Engineering,4,25064
+IIT Delhi,Computer Science and Engineering,5,16188
+IIT Delhi,Electrical Engineering,4,21855
+IIT Delhi,Electrical Engineering (Power and Automation),4,16226
+IIT Delhi,Energy Engineering,4,10723
+IIT Delhi,Engineering and Computational Mechanics,4,12598
+IIT Delhi,Engineering Physics,4,10969
+IIT Delhi,Materials Engineering,4,10064
+IIT Delhi,Mathematics and Computing,4,18760
+IIT Delhi,Mathematics and Computing,5,13741
+IIT Delhi,Mechanical Engineering,4,19035
+IIT Delhi,Production and Industrial Engineering,4,10492
 IIT Delhi,Textile Technology,4,8868
-IIT Tirupati,Civil Engineering,4,8622
-IIT Jodhpur,Civil and Infrastructure Engineering,4,8598
-IIT Kharagpur,Ocean Engineering and Naval Architecture,4,8541
-IIT Kharagpur,Mining Engineering,4,8533
-IIT (BHU) Varanasi,Mechanical Engineering,5,8486
-IIT Gandhinagar,Integrated Circuit Design & Technology,4,8335
-IIT Madras,Naval Architecture and Ocean Engineering,4,8317
-IIT Palakkad,Civil Engineering,4,8311
-IIT Indore,Engineering Physics,4,8256
-IIT Hyderabad,Engineering Science,4,8245
-IIT Tirupati,Chemical Engineering,4,8207
-IIT Jammu,Electrical Engineering,4,8177
-IIT Roorkee,Biosciences and Bioengineering,4,8118
-IIT (ISM) Dhanbad,Petroleum Engineering,4,8056
-IIT Kanpur,Biological Sciences and Bioengineering,4,8048
-IIT Bhubaneswar,Metallurgical and Materials Engineering,4,8029
-IIT Patna,B. Tech. (CSE) and M.Tech in CSE,5,8007
-IIT Hyderabad,Biotechnology and Bioinformatics,4,7935
-IIT Gandhinagar,Mechanical Engineering,5,7787
-IIT Ropar,Metallurgical and Materials Engineering,4,7746
-IIT (BHU) Varanasi,Mining Engineering,4,7697
-IIT Jammu,Mechanical Engineering,4,7694
-IIT (ISM) Dhanbad,Mining Engineering,4,7668
-IIT (ISM) Dhanbad,Mineral and Metallurgical Engineering,4,7651
-IIT Guwahati,Biosciences and Bioengineering,4,7644
-IIT Patna,B.Tech (Artificial Intelligence and Data Science) - MBA in Digital Business Management (IIM Bodh Gaya),5,7642
-IIT Kharagpur,Agricultural and Food Engineering,4,7616
-IIT Gandhinagar,Materials Engineering,4,7583
-IIT Patna,B.Tech. in Electronics and Communication Engineering and M.Tech. in Communication Systems,5,7511
-IIT (ISM) Dhanbad,Engineering Physics,4,7443
-IIT Patna,B.Tech (Computer Science and Engineering) - MBA in Digital Business Management (IIM Bodh Gaya),5,7433
-IIT Patna,B. Tech. (Mathematics & Computing) M. Tech. in (Mathematics & Computing),5,7406
-IIT Madras,Biological Engineering,4,7380
-IIT Jammu,Mathematics and Computing,4,7323
-IIT Mandi,Engineering Physics,4,7284
-IIT Patna,Metallurgical and Materials Engineering,4,7227
-IIT (BHU) Varanasi,Civil Engineering,5,7207
-IIT Dharwad,Civil and Infrastructure Engineering,4,7191
-IIT Madras,Engineering Design,5,7189
-IIT (BHU) Varanasi,Ceramic Engineering,4,7171
-IIT (ISM) Dhanbad,Mining Machinery Engineering,4,7167
-IIT Ropar,Engineering Physics,4,7134
-IIT Jodhpur,Materials Engineering,4,7130
-IIT Hyderabad,Industrial Chemistry,4,7128
-IIT Bhilai,Mechatronics Engineering,4,7103
-IIT Bombay,Economics,4,7090
-IIT Jammu,Civil Engineering,4,7048
-IIT Hyderabad,Biomedical Engineering,4,6967
-IIT Bombay,BS in Mathematics,4,6954
-IIT Mandi,B.Tech in Materials Science and Engineering,4,6892
-IIT Bhubaneswar,Engineering Physics,4,6878
-IIT Jammu,Chemical Engineering,4,6876
-IIT Patna,B. Tech. (ECE) -M. Tech. in VLSI,5,6860
-IIT Patna,Chemical Science and Technology,4,6806
-IIT Kharagpur,Economics,4,6737
-IIT Kanpur,Economics,4,6644
-IIT Patna,Engineering Physics,4,6601
-IIT (BHU) Varanasi,Engineering Physics,5,6500
-IIT (ISM) Dhanbad,Environmental Engineering,4,6491
-IIT Mandi,B.Tech in General Engineering,4,6417
-IIT (BHU) Varanasi,Pharmaceutical Engineering & Technology,4,6393
-IIT Patna,B.Tech (Mathematics and Computing) - MBA in Digital Business Management (IIM Bodh Gaya),5,6365
-IIT Bhilai,Materials Science and Metallurgical Engineering,4,6346
-IIT (BHU) Varanasi,Metallurgical Engineering,5,6330
-IIT Bombay,Chemistry,4,6322
-IIT Jodhpur,Bio Engineering,4,6319
-IIT Kharagpur,Physics,4,6237
 IIT Dharwad,Chemical and Biochemical Engineering,4,6235
-IIT Patna,B. Tech. (EEE)-M. Tech. in (Power & Control),5,6223
-IIT Kanpur,Physics,4,6220
-IIT Patna,B.Tech (Electrical and Electronics Engineering) - MBA (IIM Bodh Gaya),5,6214
-IIT Mandi,Bio Engineering,4,6195
+IIT Dharwad,Civil and Infrastructure Engineering,4,7191
+IIT Dharwad,Computer Science and Engineering,4,13517
+IIT Dharwad,Electrical and Electronics Engineering,4,9998
+IIT Dharwad,Electronics and Communication Engineering,4,10897
 IIT Dharwad,Engineering Physics,4,6173
-IIT (BHU) Varanasi,Materials Science and Technology,5,6125
-IIT Patna,B.Tech (Mechanical Engineering) - MBA (IIM Mumbai),5,6075
-IIT Roorkee,Geological Technology,5,6045
-IIT Tirupati,Engineering Physics,4,5957
-IIT Patna,B. Tech. (ME) - M. Tech. in Mechatronics,5,5884
-IIT Kanpur,Earth Sciences,4,5866
-IIT Roorkee,Geophysical Technology,5,5827
-IIT Roorkee,Economics,5,5795
-IIT Kanpur,Chemistry,4,5772
-IIT (BHU) Varanasi,Biochemical Engineering with M.Tech. in Biochemical Engineering and Biotechnology,5,5746
-IIT Patna,B.Tech (Electronics and Communication Engineering) - MBA in Hospital and Healthcare Management (IIM Bodh Gaya),5,5726
-IIT Roorkee,Chemical Sciences,5,5676
-IIT (BHU) Varanasi,Mining Engineering,5,5620
-IIT Kharagpur,Chemistry,4,5557
-IIT (BHU) Varanasi,Bioengineering with M.Tech in Biomedical Technology,5,5507
-IIT Madras,Biological Science,4,5495
-IIT Jammu,Materials Engineering,4,5476
-IIT Roorkee,Physics,5,5468
-IIT Madras,Physics,5,5443
-IIT Patna,B. Tech in CE. - M. Tech. in Structural Engineering,5,5333
-IIT (BHU) Varanasi,Industrial Chemistry,5,5292
-IIT (BHU) Varanasi,Ceramic Engineering,5,5268
-IIT Kharagpur,Applied Geology,4,5258
-IIT Kharagpur,Exploration Geophysics,4,5199
-IIT Jodhpur,Physics with Specialization,4,5191
-IIT (BHU) Varanasi,Pharmaceutical Engineering & Technology,5,5077
-IIT Patna,B.Tech (Civil Engineering) - MBA (IIM Bodh Gaya),5,4987
-IIT (ISM) Dhanbad,Applied Geophysics,5,4980
-IIT (ISM) Dhanbad,Applied Geology,5,4917
-IIT Patna,B.Tech (Engineering Physics) - MBA (IIM Bodh Gaya),5,4896
-IIT Patna,B.Tech (Metallurgical and Materials Engineering) - MBA (IIM Bodh Gaya),5,4873
-IIT Jodhpur,Chemistry with Specialization,4,4775
-IIT Patna,B.Tech (Chemical Engineering) - MBA in Hospital and Health Care Management (IIM Bodh Gaya),5,4696
-IIT Mandi,BS in Chemical Sciences,4,4692
-IIT Patna,B. Tech in CE. - M. Tech. in Geotechnical Engineering,5,4684
-IIT Patna,B.Tech (Chemical Science and Technology) - MBA in Hospital and Health Care Management (IIM Bodh Gaya),5,4486
-IIT Patna,Economics,4,4338
 IIT Dharwad,Interdisciplinary Sciences,5,4173
-IIT Patna,BS in Economics with MBA (IIM Bodh Gaya),5,3978
-IIT Roorkee,Architecture,5,285
+IIT Dharwad,Mathematics and Computing,4,9421
+IIT Dharwad,Mechanical Engineering,4,10010
+IIT Gandhinagar,Artificial Intelligence,4,16223
+IIT Gandhinagar,Chemical Engineering,4,10599
+IIT Gandhinagar,Civil Engineering,4,10469
+IIT Gandhinagar,Computer Science and Engineering,4,18947
+IIT Gandhinagar,Computer Science and Engineering,5,11848
+IIT Gandhinagar,Electrical Engineering,4,14835
+IIT Gandhinagar,Electrical Engineering,5,9031
+IIT Gandhinagar,Integrated Circuit Design & Technology,4,8335
+IIT Gandhinagar,Materials Engineering,4,7583
+IIT Gandhinagar,Mechanical Engineering,4,13553
+IIT Gandhinagar,Mechanical Engineering,5,7787
+IIT Goa,Computer Science and Engineering,4,13765
+IIT Goa,Electrical Engineering,4,10889
+IIT Goa,Mathematics and Computing,4,9711
+IIT Goa,Mechanical Engineering,4,10120
+IIT Guwahati,Biosciences and Bioengineering,4,7644
+IIT Guwahati,Chemical Engineering,4,13437
+IIT Guwahati,Chemical Science and Technology,4,9603
+IIT Guwahati,Civil Engineering,4,13308
+IIT Guwahati,Computer Science and Engineering,4,22263
+IIT Guwahati,Data Science and Artificial Intelligence,4,18633
+IIT Guwahati,Electronics and Communication Engineering,4,20358
+IIT Guwahati,Electronics and Electrical Engineering,4,17334
+IIT Guwahati,Energy Engineering,4,9238
+IIT Guwahati,Engineering Physics,4,9404
+IIT Guwahati,Mathematics and Computing,4,16452
+IIT Guwahati,Mechanical Engineering,4,16489
+IIT Hyderabad,Artificial Intelligence,4,20682
+IIT Hyderabad,Biomedical Engineering,4,6967
+IIT Hyderabad,Biotechnology and Bioinformatics,4,7935
+IIT Hyderabad,Chemical Engineering,4,12955
+IIT Hyderabad,Civil Engineering,4,12637
+IIT Hyderabad,Computational Engineering,4,12787
+IIT Hyderabad,Computer Science and Engineering,4,23349
+IIT Hyderabad,Electrical Engineering,4,19036
+IIT Hyderabad,Electrical Engineering (IC Design and Technology),4,14725
+IIT Hyderabad,Engineering Physics,4,9014
+IIT Hyderabad,Engineering Science,4,8245
+IIT Hyderabad,Industrial Chemistry,4,7128
+IIT Hyderabad,Materials Science and Metallurgical Engineering,4,9189
+IIT Hyderabad,Mathematics and Computing,4,16984
+IIT Hyderabad,Mechanical Engineering,4,16829
+IIT Indore,Chemical Engineering,4,11885
+IIT Indore,Civil Engineering,4,11839
+IIT Indore,Computer Science and Engineering,4,20763
+IIT Indore,Electrical Engineering,4,16827
+IIT Indore,Engineering Physics,4,8256
+IIT Indore,Mathematics and Computing,4,14659
+IIT Indore,Mechanical Engineering,4,15001
+IIT Indore,Metallurgical Engineering and Materials Science,4,8995
+IIT Indore,Space Sciences and Engineering,4,9664
+IIT Jammu,Chemical Engineering,4,6876
+IIT Jammu,Civil Engineering,4,7048
+IIT Jammu,Computer Science and Engineering,4,10012
+IIT Jammu,Electrical Engineering,4,8177
+IIT Jammu,Materials Engineering,4,5476
+IIT Jammu,Mathematics and Computing,4,7323
+IIT Jammu,Mechanical Engineering,4,7694
+IIT Jodhpur,Artificial Intelligence and Data Science,4,14233
+IIT Jodhpur,Bio Engineering,4,6319
+IIT Jodhpur,Chemical Engineering,4,9859
+IIT Jodhpur,Chemistry with Specialization,4,4775
+IIT Jodhpur,Civil and Infrastructure Engineering,4,8598
+IIT Jodhpur,Computer Science and Engineering,4,16506
+IIT Jodhpur,Electrical Engineering,4,13629
+IIT Jodhpur,Materials Engineering,4,7130
+IIT Jodhpur,Mechanical Engineering,4,12091
+IIT Jodhpur,Physics with Specialization,4,5191
+IIT Kanpur,Aerospace Engineering,4,14574
+IIT Kanpur,Biological Sciences and Bioengineering,4,8048
+IIT Kanpur,Chemical Engineering,4,14817
+IIT Kanpur,Chemistry,4,5772
+IIT Kanpur,Civil Engineering,4,14563
+IIT Kanpur,Computer Science and Engineering,4,24363
+IIT Kanpur,Earth Sciences,4,5866
+IIT Kanpur,Economics,4,6644
+IIT Kanpur,Electrical Engineering,4,21199
+IIT Kanpur,Materials Science and Engineering,4,10097
+IIT Kanpur,Mathematics and Scientific Computing,4,13390
+IIT Kanpur,Mechanical Engineering,4,18612
+IIT Kanpur,Physics,4,6220
+IIT Kanpur,Statistics and Data Science,4,11794
+IIT Kharagpur,Aerospace Engineering,4,14215
+IIT Kharagpur,Agricultural and Food Engineering,4,7616
+IIT Kharagpur,Applied Geology,4,5258
 IIT Kharagpur,Architecture,5,279
-IIT (BHU) Varanasi,Architecture,5,252
+IIT Kharagpur,Artificial Intelligence,4,20915
+IIT Kharagpur,Biotechnology and Biochemical Engineering,4,8869
+IIT Kharagpur,Chemical Engineering,4,15131
+IIT Kharagpur,Chemistry,4,5557
+IIT Kharagpur,Civil Engineering,4,14397
+IIT Kharagpur,Computer Science and Engineering,4,24280
+IIT Kharagpur,Economics,4,6737
+IIT Kharagpur,Electrical Engineering,4,20551
+IIT Kharagpur,Electronics and Electrical Communication Engineering,4,20193
+IIT Kharagpur,Exploration Geophysics,4,5199
+IIT Kharagpur,Industrial and Systems Engineering,4,8956
+IIT Kharagpur,Instrumentation Engineering,4,9593
+IIT Kharagpur,Manufacturing Science and Engineering,4,8911
+IIT Kharagpur,Mathematics and Computing,4,14318
+IIT Kharagpur,Mechanical Engineering,4,18401
+IIT Kharagpur,Metallurgical and Materials Engineering,4,11483
+IIT Kharagpur,Mining Engineering,4,8533
+IIT Kharagpur,Ocean Engineering and Naval Architecture,4,8541
+IIT Kharagpur,Physics,4,6237
+IIT Madras,Aerospace Engineering,4,14165
+IIT Madras,Aerospace Engineering,5,9505
+IIT Madras,Artificial Intelligence and Data Analytics,4,20323
+IIT Madras,Biological Engineering,4,7380
+IIT Madras,Biological Science,4,5495
+IIT Madras,Chemical Engineering,4,13841
+IIT Madras,Civil Engineering,4,13901
+IIT Madras,Computer Science and Engineering,4,23741
+IIT Madras,Electrical Engineering,4,20350
+IIT Madras,Engineering Design,5,7189
+IIT Madras,Engineering Physics,4,9627
+IIT Madras,Mechanical Engineering,4,17922
+IIT Madras,Metallurgical and Materials Engineering,4,10485
+IIT Madras,Naval Architecture and Ocean Engineering,4,8317
+IIT Madras,Physics,5,5443
+IIT Mandi,B.Tech in General Engineering,4,6417
+IIT Mandi,B.Tech in Materials Science and Engineering,4,6892
+IIT Mandi,B.Tech in Mathematics and Computing,4,11139
+IIT Mandi,B.Tech in Microelectronics & VLSI,4,9090
+IIT Mandi,Bio Engineering,4,6195
+IIT Mandi,BS in Chemical Sciences,4,4692
+IIT Mandi,Civil Engineering,4,9761
+IIT Mandi,Computer Science and Engineering,4,16569
+IIT Mandi,Data Science and Engineering,4,12676
+IIT Mandi,Electrical Engineering,4,13139
+IIT Mandi,Engineering Physics,4,7284
+IIT Mandi,Mechanical Engineering,4,11810
+IIT Palakkad,Civil Engineering,4,8311
+IIT Palakkad,Computer Science and Engineering,4,12851
+IIT Palakkad,Data Science and Engineering,4,10134
+IIT Palakkad,Electrical Engineering,4,10173
+IIT Palakkad,Mechanical Engineering,4,9534
+IIT Patna,Artificial Intelligence and Data Science,4,13175
+IIT Patna,B. Tech in CE. - M. Tech. in Geotechnical Engineering,5,4684
+IIT Patna,B. Tech in CE. - M. Tech. in Structural Engineering,5,5333
+IIT Patna,B. Tech. (CSE) and M.Tech in CSE,5,8007
+IIT Patna,B. Tech. (ECE) -M. Tech. in VLSI,5,6860
+IIT Patna,B. Tech. (EEE)-M. Tech. in (Power & Control),5,6223
+IIT Patna,B. Tech. (Mathematics & Computing) M. Tech. in (Mathematics & Computing),5,7406
+IIT Patna,B. Tech. (ME) - M. Tech. in Mechatronics,5,5884
+IIT Patna,B.Tech (Artificial Intelligence and Data Science) - MBA in Digital Business Management (IIM Bodh Gaya),5,7642
+IIT Patna,B.Tech (Chemical Engineering) - MBA in Hospital and Health Care Management (IIM Bodh Gaya),5,4696
+IIT Patna,B.Tech (Chemical Science and Technology) - MBA in Hospital and Health Care Management (IIM Bodh Gaya),5,4486
+IIT Patna,B.Tech (Civil Engineering) - MBA (IIM Bodh Gaya),5,4987
+IIT Patna,B.Tech (Computer Science and Engineering) - MBA in Digital Business Management (IIM Bodh Gaya),5,7433
+IIT Patna,B.Tech (Electrical and Electronics Engineering) - MBA (IIM Bodh Gaya),5,6214
+IIT Patna,B.Tech (Electronics and Communication Engineering) - MBA in Hospital and Healthcare Management (IIM Bodh Gaya),5,5726
+IIT Patna,B.Tech (Engineering Physics) - MBA (IIM Bodh Gaya),5,4896
+IIT Patna,B.Tech (Mathematics and Computing) - MBA in Digital Business Management (IIM Bodh Gaya),5,6365
+IIT Patna,B.Tech (Mechanical Engineering) - MBA (IIM Mumbai),5,6075
+IIT Patna,B.Tech (Metallurgical and Materials Engineering) - MBA (IIM Bodh Gaya),5,4873
+IIT Patna,B.Tech. in Electronics and Communication Engineering and M.Tech. in Communication Systems,5,7511
+IIT Patna,BS in Economics with MBA (IIM Bodh Gaya),5,3978
+IIT Patna,Chemical Engineering,4,9127
+IIT Patna,Chemical Science and Technology,4,6806
+IIT Patna,Civil Engineering,4,9439
+IIT Patna,Computer Science and Engineering,4,15482
+IIT Patna,Economics,4,4338
+IIT Patna,Electrical and Electronics Engineering,4,11400
+IIT Patna,Electronics and Communication Engineering,4,13055
+IIT Patna,Engineering Physics,4,6601
+IIT Patna,Mathematics and Computing,4,10741
+IIT Patna,Mechanical Engineering,4,10989
+IIT Patna,Metallurgical and Materials Engineering,4,7227
+IIT Roorkee,Architecture,5,285
+IIT Roorkee,Biosciences and Bioengineering,4,8118
+IIT Roorkee,Chemical Engineering,4,15016
+IIT Roorkee,Chemical Sciences,5,5676
+IIT Roorkee,Civil Engineering,4,15047
+IIT Roorkee,Computer Science and Engineering,4,24292
+IIT Roorkee,Data Science and Artificial Intelligence,4,20441
+IIT Roorkee,Economics,5,5795
+IIT Roorkee,Electrical Engineering,4,20810
+IIT Roorkee,Electronics and Communication Engineering,4,22659
+IIT Roorkee,Energy Engineering,4,9283
+IIT Roorkee,Engineering Physics,4,9857
+IIT Roorkee,Geological Technology,5,6045
+IIT Roorkee,Geophysical Technology,5,5827
+IIT Roorkee,Mathematics & Computing,5,11225
+IIT Roorkee,Mechanical Engineering,4,18532
+IIT Roorkee,Metallurgical and Materials Engineering,4,11110
+IIT Roorkee,Physics,5,5468
+IIT Roorkee,Production and Industrial Engineering,4,9731
+IIT Ropar,Artificial Intelligence and Data Engineering,4,13764
+IIT Ropar,Chemical Engineering,4,9716
+IIT Ropar,Civil Engineering,4,9693
+IIT Ropar,Computer Science and Engineering,4,16326
+IIT Ropar,Electrical Engineering,4,13402
+IIT Ropar,Engineering Physics,4,7134
+IIT Ropar,Mathematics and Computing,4,11493
+IIT Ropar,Mechanical Engineering,4,11811
+IIT Ropar,Metallurgical and Materials Engineering,4,7746
+IIT Tirupati,Chemical Engineering,4,8207
+IIT Tirupati,Civil Engineering,4,8622
+IIT Tirupati,Computer Science and Engineering,4,14048
+IIT Tirupati,Electrical Engineering,4,11026
+IIT Tirupati,Engineering Physics,4,5957
+IIT Tirupati,Mechanical Engineering,4,10141

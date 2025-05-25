@@ -527,7 +527,7 @@ with open("exported_data/csv/allotment.csv",'w') as file:
 sql.execute("SELECT * FROM branches;")
 page_content = sql.fetchall()
 # write to csv file
-with open("exported_data/csv/branches.csv",'w') as file:
+with open("exported_data/csv/choices.csv",'w') as file:
     writer = csv.writer(file)
     for i in page_content:
         writer.writerow(i)
