@@ -415,7 +415,7 @@ for line in page_content:
 db.commit()
 #"""
 
-page_nos = range(455, 457) #last page 595 (2nd argument)
+page_nos = range(455, 456) #last page 595 (2nd argument)
 page_content = []
 headers = [] # to make all table headers appear only once
 for i in page_nos:
@@ -427,10 +427,10 @@ for i in page_nos:
     if i == 455:
         del content[0:2]
     
-    
+    for line in content
             
     
         
         
-    print("\n".join(page_content))
+    print("\n".join(content))
     
