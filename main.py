@@ -1,6 +1,8 @@
 from PyPDF2 import PdfReader
 import mysql.connector, dotenv, os, json, csv
 
+# every scraping module has its own section in the code, enclosed by """ and #"""
+
 """
 Table def:
 CREATE TABLE data (
@@ -423,6 +425,8 @@ for line in page_content:
     sql.execute("INSERT INTO branches (institute, programme, chosen, duration) VALUES (%s,%s,%s,%s);", (institutes[line[0]],branches[line[1]],int(line[2]),int(line[1][0])))
 db.commit()
 #"""
+"""
+# getting Opening and Closing ranks
 page_nos = range(455, 595) #last page 455,595 (2nd argument)
 page_content = []
 headers = [] # to make all table headers appear only once
@@ -493,3 +497,37 @@ for line in page_content:
 db.commit()
 db.close()
 # close the database connection
+#"""
+
+# Writing ORCR data to CSV file
+
+# get data
+sql.execute("SELECT * FROM ORCR;")
+page_content = sql.fetchall()
+# write to csv file
+with open("exported_data/csv/ORCR.csv",'w') as file:
+    writer = csv.writer(file)
+    for i in page_content:
+        writer.writerow(i)
+
+# Writing allotment data to CSV file
+
+# get data
+sql.execute("SELECT * FROM data;")
+page_content = sql.fetchall()
+# write to csv file
+with open("exported_data/csv/allotment.csv",'w') as file:
+    writer = csv.writer(file)
+    for i in page_content:
+        writer.writerow(i)
+        
+# Writing branches data to CSV file
+
+# get data
+sql.execute("SELECT * FROM branches;")
+page_content = sql.fetchall()
+# write to csv file
+with open("exported_data/csv/branches.csv",'w') as file:
+    writer = csv.writer(file)
+    for i in page_content:
+        writer.writerow(i)
