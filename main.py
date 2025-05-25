@@ -1,5 +1,5 @@
 from PyPDF2 import PdfReader
-import mysql.connector, dotenv, os, json
+import mysql.connector, dotenv, os, json, csv
 
 """
 Table def:
@@ -22,6 +22,15 @@ CREATE TABLE branches (
     chosen INT,
     PRIMARY KEY (institute, programme, duration)
 );
+
+CREATE TABLE ORCR ( # ORCR = Opening Rank Closing Rank
+    -> institute VARCHAR(50),
+    -> branch VARCHAR(300),
+    -> category VARCHAR(10),
+    -> pool VARCHAR(10),
+    -> opening_rank INT,
+    -> closing_rank INT
+    -> );
 """
 
 dotenv.load_dotenv()
@@ -414,10 +423,12 @@ for line in page_content:
     sql.execute("INSERT INTO branches (institute, programme, chosen, duration) VALUES (%s,%s,%s,%s);", (institutes[line[0]],branches[line[1]],int(line[2]),int(line[1][0])))
 db.commit()
 #"""
-
-page_nos = range(455, 456) #last page 595 (2nd argument)
+page_nos = range(455, 595) #last page 455,595 (2nd argument)
 page_content = []
 headers = [] # to make all table headers appear only once
+fixed_line = "" 
+with open("institutes.json", "r") as f:
+    institutes = json.load(f)
 for i in page_nos:
     content = reader.pages[i].extract_text()
     content = content.split("\n")
@@ -426,11 +437,59 @@ for i in page_nos:
     
     if i == 455:
         del content[0:2]
+        
+    if i == 594:
+        content.append("001 LOSER CODE HEHEHAHA")
     
-    for line in content
+    
+    for line_no, line in enumerate(content):
+        if "Academic Program" in line:
+            continue
+        line = line.strip()
+        if line[0].isdigit():
+            if "PwD" not in fixed_line:
+                # process line
+                fixed_line = fixed_line.replace("(includingSupernumerary)", " ").replace("Female-only", " Female-only")
+                fixed_line = fixed_line.replace("IIT", " IIT")
+                fixed_line = fixed_line.replace("  ", " ") # remove double spaces
+                fixed_line = fixed_line.replace("(ISM)", "(ISM) ")
+                fixed_line = fixed_line.replace("(BHU)", "(BHU) ")
+                for institute in institutes.values():
+                    fixed_line = fixed_line.replace(institute, institute + " ")
+                
+                for category in ["OPEN", "EWS", "OBC-NCL", "SC", "ST"]:
+                    fixed_line = fixed_line.replace(category, " " + category)
+                
+                # i want that each institute name is 2 part - IIT <place>.. so... ISM and BHU has to face this heartless treatment
+                fixed_line = fixed_line.replace("(ISM) ", "(ISM)")
+                fixed_line = fixed_line.replace("(BHU) ", "(BHU)")
+                page_content.append(fixed_line)
+                
+                
+    
+
+            fixed_line = line # now process the new line that had the number infront
+
             
-    
-        
-        
-    print("\n".join(content))
-    
+        else:
+            fixed_line += line
+
+# print("\n".join(page_content))
+page_content.pop(0) # remove the first line which is empty
+
+for line in page_content:
+    line = line.split(" ")[1:] # remove the first item which is the serial number
+    institute = " ".join(line[:2])
+    del line[:2] # remove institute name
+    OR = line.pop(-2)
+    CR = line.pop(-1) # remove OR and CR
+    gender_pool = line.pop(-1)
+    category = line.pop(-1) # remove category
+    # now remaining is the branch in list form
+    branch = " ".join(line)
+ 
+    print(institute, branch, category, gender_pool, OR, CR, sep=" | ")
+    sql.execute("INSERT INTO ORCR (institute, branch, category, pool, opening_rank, closing_rank) VALUES (%s, %s, %s, %s, %s, %s)", (institute, branch, category, gender_pool, OR, CR))
+db.commit()
+db.close()
+# close the database connection
