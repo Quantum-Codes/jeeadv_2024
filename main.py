@@ -415,7 +415,7 @@ for line in page_content:
 db.commit()
 #"""
 
-page_nos = range(455, 456) #last page 595 (2nd argument)
+page_nos = range(455, 457) #last page 595 (2nd argument)
 page_content = []
 headers = [] # to make all table headers appear only once
 for i in page_nos:
@@ -427,48 +427,7 @@ for i in page_nos:
     if i == 455:
         del content[0:2]
     
-    fixed_line = ""
-    for line in content:
-        if line[0].isdigit() and fixed_line:
-            if "PwD" in fixed_line: 
-                # so im not getting stats for pwd guys. 
-                # this is because their stats are not labelled correctly in JIC report (Very weird but yes, its true).
-                # they do not specify who got the seat - normal PWD or a preparatory guy.
-                # josaa does this perfectly fine but idk why this report doesnt
-                # (Josaa data and JIC data are the same, just the "P" marker like in josaa doesnt exist in JIC..)
-                continue
-            print(f"PROCESSING: {fixed_line}")
-            fixed_line = fixed_line.strip().split(" ")
-            CR = fixed_line.pop(-1) # remove CR from the end of the line   
-            # at this point we got a line thats completely fine, so start processing it
-            
-            # check if OR is given correctly or joined to gender. also female entries' columns are more joined together
-            if "Supernumerary" in fixed_line[-1]:
-                OR = fixed_line.pop(-1).partition(")")[2] # line like "Supernumerary)2107"
-                gender = "female"
-                fixed_line = " ".join(fixed_line)
-                fixed_line = fixed_line.replace("Female-only (including","")
-                print(fixed_line)
-            else:
-                OR = fixed_line.pop(-1)
-                gender = "neutral"
-                fixed_line.pop(-1) # "gender-neutral" text
-                fixed_line = " ".join(fixed_line) 
-            
-            
-            # yea.. unreadable code and might be inefficient but it works for the purpose and was fast to write
-            # basically partitioning at the last closing bracket found
-            category, fixed_line = [item[::-1] for item in fixed_line[::-1].partition(")")][::2] # skip the closing bracket and get the category and fixed_line
-            fixed_line += ")" # reunite it with the bracket it lost during partition 
-            
-            print(category, "\n")
-            
-            
-            
-            page_content.append(fixed_line)
-            fixed_line = line
-        else:
-            fixed_line += line + " "
+    
             
     
         
