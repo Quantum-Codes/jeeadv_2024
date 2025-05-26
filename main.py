@@ -26,13 +26,13 @@ CREATE TABLE branches (
 );
 
 CREATE TABLE ORCR ( # ORCR = Opening Rank Closing Rank
-    -> institute VARCHAR(50),
-    -> branch VARCHAR(300),
-    -> category VARCHAR(10),
-    -> pool VARCHAR(10),
-    -> opening_rank INT,
-    -> closing_rank INT
-    -> );
+    institute VARCHAR(50),
+    branch VARCHAR(300),
+    category VARCHAR(10),
+    pool VARCHAR(10),
+    opening_rank INT,
+    closing_rank INT
+);
 """
 
 dotenv.load_dotenv()
@@ -497,6 +497,9 @@ for line in page_content:
 db.commit()
 db.close()
 # close the database connection
+
+# Also somehow, every occurance of Artificial had weird characters, so do this:
+# UPDATE ORCR SET branch = REPLACE(branch, "Artiﬁcial Intelligence", "Artificial Intelligence") WHERE branch LIKE "%Art%";
 #"""
 
 # Writing ORCR data to CSV file
