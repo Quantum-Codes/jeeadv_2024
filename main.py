@@ -583,3 +583,41 @@ Rejected queries:
 1. SELECT institute, SUM(chosen) AS chosen FROM branches GROUP BY institute ORDER BY SUM(chosen) DESC; -> this is highly sensitive to number of branches, so there is no use of this statistic
 SELECT B.institute AS inst, B.programme AS prog, MIN(cat_rank) AS OpR, MAX(cat_rank) AS CR FROM data as A, broken_branches as B WHERE A.category = "ST" AND A.institute = B.institute AND A.programme = B.programme GROUP BY B.institute, B.programme;
 """
+
+page_nos = range(32,53) #53 is 2nd argumnet
+with open("cities.json","r") as file:
+    cities = json.load(file)
+cities = cities["cities"]
+
+page_content = []
+
+for i in page_nos:
+    page = reader.pages[i].extract_text()
+    content = page.split("\n")
+    content.pop(0)
+    content.pop(0)
+    if i==32:
+        content.pop(0)
+    
+    fixed_line = ""
+    for line in content:
+        if line[0].isnumeric():
+            #process
+            page_content.append(fixed_line)
+            fixed_line = line
+        else:
+            fixed_line += line
+   
+city_dir = {} 
+for line in page_content:
+    if line.strip() == "":
+        continue
+        
+    center_code = line.split()[0]
+    for city in cities:
+        if city in line:
+            city_dir[center_code] = city
+
+for key,value in city_dir.items():
+    print(key,value)
+             
