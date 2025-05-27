@@ -2,7 +2,7 @@ from PyPDF2 import PdfReader
 import mysql.connector, dotenv, os, json, csv
 
 # every scraping module has its own section in the code, enclosed by """ and #"""
-
+# also note that some of the variable names might be misleading (they were made for a purpose but now have a different purpose in different modules)
 """
 Table def:
 CREATE TABLE data (
@@ -500,8 +500,32 @@ db.close()
 
 # Also somehow, every occurance of Artificial had weird characters, so do this:
 # UPDATE ORCR SET branch = REPLACE(branch, "Artiﬁcial Intelligence", "Artificial Intelligence") WHERE branch LIKE "%Art%";
+
+
+# At this point, i just wrote the data to a csv file using the code below. the paragraph right below this line was added later when some inconsistency in data was observed.
+
+# Now also there is a problem in the data. JIC report does not label prep ranks in ORCR properly so we gotta remove them to not confuse people
+# OR rather than removing, we could check out the allotment table (data table) and see if the roll number is prep or not. If it is, then we can remove the ORCR entry.
+# Also this is commentatory after me doing this stuff and it was too late for me to realise that there were easier ways to detect these entries. - 1. Check OR > CR 2. Check if female opening < male opening 3. Check for architecture programme manually (while querying i noticed that these cases are almost exclusively for female ST seats)
+# if you are folliwing this code, then you can use the method i said above to remove the prep entries from ORCR table.
+
+# THIS IS WRONG BELOW (corrected manually in excel) but i just decided to put these here as a learning
+
+# CREATE TABLE broken_branches AS SELECT DISTINCT institute, programme FROM data WHERE institute IS NOT NULL AND category LIKE "PREP%" AND category NOT LIKE "%PwD%"; # getting prep ranks
+# CREATE TABLE fixed_ORCR AS SELECT B.institute AS inst, B.programme AS prog, MIN(cat_rank) AS OpR, MAX(cat_rank) AS CR FROM data as A, broken_branches as B WHERE A.category = "ST" AND A.institute = B.institute AND A.programme = B.programme GROUP BY B.institute, B.programme;
+# now i see one table has 2 entries less than the other which was weird. query to see the difference:
+# SELECT A.institute, A.programme FROM broken_branches AS A LEFT JOIN fixed_ORCR AS B   ON A.institute = B.inst AND A.programme = B.prog WHERE B.inst IS NULL;
+# there was probably a better way ig but now we see 2 architecture branches
+# now you have all branches with prep rank somewhere in ORCR and you also have the corrected OR and CR. just edit those entries with a script or manually
+# -- wrong over --
+# after doing all this i realised that the fixed_ORCR had females and males mixed up cuz JIC did not have distinct data for M and F
+# also i noticed that most prep ranks had both OR prep and CR prep except for IIT BHU Chemical who had only 1 ST girl who was not prep, so i edited CR as 1802 manually
+# then for rest of records in broken_branches, i just made OR and CR both NULL (blank) in excel. there were like 51 branches like this ig.. i dont remember 
+
+# DATA FIXING FINALLY OVER!!!!!!!!!! (i hope)
 #"""
 
+"""
 # Writing ORCR data to CSV file
 
 # get data
@@ -534,3 +558,28 @@ with open("exported_data/csv/choices.csv",'w') as file:
     writer = csv.writer(file)
     for i in page_content:
         writer.writerow(i)
+
+#"""
+
+"""
+# Stats for reddit
+
+# College preference stat (CS Stat in combined.xlsx)
+sql.execute("SELECT institute, programme, duration, chosen FROM branches WHERE programme LIKE \"Computer%\" ORDER BY chosen DESC;")
+data = sql.fetchall()
+with open("stat.csv", "w") as f:
+    writer = csv.writer(f)
+    writer.writerow(["Institute", "programme", "duration", "Choices"])
+    writer.writerows(data)
+
+# Largest rank range
+sql.execute("")
+
+# close the database connection
+db.close()
+"""
+"""
+Rejected queries:
+1. SELECT institute, SUM(chosen) AS chosen FROM branches GROUP BY institute ORDER BY SUM(chosen) DESC; -> this is highly sensitive to number of branches, so there is no use of this statistic
+SELECT B.institute AS inst, B.programme AS prog, MIN(cat_rank) AS OpR, MAX(cat_rank) AS CR FROM data as A, broken_branches as B WHERE A.category = "ST" AND A.institute = B.institute AND A.programme = B.programme GROUP BY B.institute, B.programme;
+"""
