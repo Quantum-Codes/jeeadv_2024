@@ -584,40 +584,47 @@ Rejected queries:
 SELECT B.institute AS inst, B.programme AS prog, MIN(cat_rank) AS OpR, MAX(cat_rank) AS CR FROM data as A, broken_branches as B WHERE A.category = "ST" AND A.institute = B.institute AND A.programme = B.programme GROUP BY B.institute, B.programme;
 """
 
-page_nos = range(32,53) #53 is 2nd argumnet
-with open("cities.json","r") as file:
-    cities = json.load(file)
-cities = cities["cities"]
+# Page numbers to process for extracting city data
+page_nos = range(32, 53)  # 53 is the second argument (end of range)
 
+# Load city data from JSON file
+with open("cities.json", "r") as file: 
+    cities = json.load(file)  # Load JSON file containing city names
+cities = cities["cities"]  # Extract the list of cities
+
+# Initialize a list to store processed page content
 page_content = []
 
+# Loop through the specified page numbers
 for i in page_nos:
-    page = reader.pages[i].extract_text()
-    content = page.split("\n")
-    content.pop(0)
-    content.pop(0)
-    if i==32:
-        content.pop(0)
-    
+    page = reader.pages[i].extract_text()  # Extract text from the current page
+    content = page.split("\n")  # Split the page content into lines
+    content.pop(0)  # Remove the first line (header)
+    content.pop(0)  # Remove the second line (table headers)
+    if i == 32:  # first page
+        content.pop(0)  # title
+
     fixed_line = ""
     for line in content:
-        if line[0].isnumeric():
-            #process
-            page_content.append(fixed_line)
-            fixed_line = line
+        if line[0].isnumeric():  # Check if the line starts with a number (indicating a new entry)
+            # Process the accumulated line
+            page_content.append(fixed_line)  # Add the processed line to the list
+            fixed_line = line  # Start a new line for processing
         else:
-            fixed_line += line
-   
+            fixed_line += line  # Append the current line to the accumulated line
+
 city_dir = {} 
 for line in page_content:
-    if line.strip() == "":
+    if line.strip() == "":  # Skip empty lines
         continue
         
-    center_code = line.split()[0]
-    for city in cities:
+    center_code = line.split()[0]  # Extract the center code (first word in the line)
+    for city in cities:  # Check if any city name is present in the line
         if city in line:
-            city_dir[center_code] = city
+            city_dir[center_code] = city  # Map the center code to the city name
 
-for key,value in city_dir.items():
-    print(key,value)
-             
+# Print the mapping of center codes to city names
+for key, value in city_dir.items():
+    print(key, value)
+
+# now find that in roll number and map all cities
