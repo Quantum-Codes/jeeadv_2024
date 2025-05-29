@@ -533,7 +533,7 @@ db.close()
 # DATA FIXING FINALLY OVER!!!!!!!!!! (i hope)
 #"""
 
-"""
+#"""
 # Writing ORCR data to CSV file
 
 # get data
@@ -591,7 +591,7 @@ Rejected queries:
 1. SELECT institute, SUM(chosen) AS chosen FROM branches GROUP BY institute ORDER BY SUM(chosen) DESC; -> this is highly sensitive to number of branches, so there is no use of this statistic
 SELECT B.institute AS inst, B.programme AS prog, MIN(cat_rank) AS OpR, MAX(cat_rank) AS CR FROM data as A, broken_branches as B WHERE A.category = "ST" AND A.institute = B.institute AND A.programme = B.programme GROUP BY B.institute, B.programme;
 """
-
+"""
 # Page numbers to process for extracting city data
 page_nos = range(32, 53)  # 53 is the second argument (end of range)
 
@@ -637,4 +637,6 @@ for key, value in city_dir.items():
     sql.execute("INSERT INTO centre_codes (code, city, state) VALUES (%s, %s, %s);", (key, value[0], value[1]))  # Insert the center code, city name, and state into the database
 
 db.commit()
-# now find that in roll number and map all cities - we can do this purely with sql queries maybe..
+# now find that in roll number and map all cities - we can do this purely with sql queries
+# UPDATE data AS D JOIN centre_codes AS B ON B.code = SUBSTRING(D.roll, 3, 4) SET D.city = B.city, D.state = B.state;
+#"""
