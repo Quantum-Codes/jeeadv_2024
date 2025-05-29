@@ -14,7 +14,9 @@ CREATE TABLE data (
     institute VARCHAR(50), 
     programme VARCHAR(120),
     AAT_qualified BOOL,
-    program_duration TINYINT
+    program_duration TINYINT,
+    state VARCHAR(40),
+    city VARCHAR(30)
 );
 
 CREATE TABLE branches (
@@ -32,6 +34,12 @@ CREATE TABLE ORCR ( # ORCR = Opening Rank Closing Rank
     pool VARCHAR(10),
     opening_rank INT,
     closing_rank INT
+);
+
+CREATE TABLE centre_codes (
+    code CHAR(4) PRIMARY KEY,
+    city VARCHAR(30),
+    state VARCHAR(40)
 );
 """
 
@@ -589,8 +597,8 @@ page_nos = range(32, 53)  # 53 is the second argument (end of range)
 
 # Load city data from JSON file
 with open("cities.json", "r") as file: 
-    cities = json.load(file)  # Load JSON file containing city names
-cities = cities["cities"]  # Extract the list of cities
+    city_data = json.load(file)  # Load JSON file containing city names
+cities = city_data.keys() # Extract the list of cities
 
 # Initialize a list to store processed page content
 page_content = []
@@ -620,11 +628,13 @@ for line in page_content:
         
     center_code = line.split()[0]  # Extract the center code (first word in the line)
     for city in cities:  # Check if any city name is present in the line
-        if city in line:
-            city_dir[center_code] = city  # Map the center code to the city name
+        if city.lower().replace("-","") in line.lower().replace("-",""):  # Case-insensitive match, ignoring hyphens
+            city_dir[center_code] = (city, city_data[city])  # Map the center code to the city name and state
 
-# Print the mapping of center codes to city names
+# Print the mapping of center codes to city names and save
 for key, value in city_dir.items():
     print(key, value)
+    sql.execute("INSERT INTO centre_codes (code, city, state) VALUES (%s, %s, %s);", (key, value[0], value[1]))  # Insert the center code, city name, and state into the database
 
-# now find that in roll number and map all cities
+db.commit()
+# now find that in roll number and map all cities - we can do this purely with sql queries maybe..
