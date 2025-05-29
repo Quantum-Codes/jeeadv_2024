@@ -1,7 +1,7 @@
 from PyPDF2 import PdfReader
 import mysql.connector, dotenv, os, json, csv
 
-# every scraping module has its own section in the code, enclosed by """ and #"""
+# every scraping module has its own section in the code, enclosed by """ and #""" (this was built like jyupiter notebook; running cells one by one)
 # also note that some of the variable names might be misleading (they were made for a purpose but now have a different purpose in different modules)
 """
 Table def:
@@ -58,7 +58,7 @@ reader = PdfReader("JIC 2024.pdf")
 number_of_pages = len(reader.pages)
 
 
-"""
+#"""
 # Roll vs CRL
 page_nos = range(53, 212) # until and including AAT text
 page_content = []
@@ -204,8 +204,11 @@ for line in page_content:
         for item in line:
             sql.execute("INSERT INTO data (roll, AAT_qualified) VALUES (%s, 1) ON DUPLICATE KEY UPDATE AAT_qualified = 1;", (item,))
 db.commit()
-"""
-"""
+#"""
+
+
+
+#"""
 # CRL vs Marks
 page_nos = range(18, 21)
 page_content = []
@@ -261,7 +264,11 @@ for line in page_content:
 
 db.commit()
 #"""
-"""
+
+
+
+
+#"""
 # the following data in json files were not scraped. just the table was copy pasted into chatgpt as text and converted to json
 with open("institutes.json", "r") as f:
     institutes = json.load(f)
@@ -386,7 +393,11 @@ for line in page_content:
     
 db.commit()
 #"""
-"""
+
+
+
+
+#"""
 # choice count
 
 # take data of code - name
@@ -433,7 +444,11 @@ for line in page_content:
     sql.execute("INSERT INTO branches (institute, programme, chosen, duration) VALUES (%s,%s,%s,%s);", (institutes[line[0]],branches[line[1]],int(line[2]),int(line[1][0])))
 db.commit()
 #"""
-"""
+
+
+
+
+#"""
 # getting Opening and Closing ranks
 page_nos = range(455, 595) #last page 455,595 (2nd argument)
 page_content = []
@@ -533,7 +548,10 @@ db.close()
 # DATA FIXING FINALLY OVER!!!!!!!!!! (i hope)
 #"""
 
-"""
+
+
+
+#"""
 # Writing ORCR data to CSV file
 
 # get data
@@ -569,7 +587,10 @@ with open("exported_data/csv/choices.csv",'w') as file:
 
 #"""
 
-"""
+
+
+
+#"""
 # Page numbers to process for extracting city data
 page_nos = range(32, 53)  # 53 is the second argument (end of range)
 
@@ -696,5 +717,5 @@ db.close()
 """
 Rejected stats queries:
 1. SELECT institute, SUM(chosen) AS chosen FROM branches GROUP BY institute ORDER BY SUM(chosen) DESC; -> this is highly sensitive to number of branches, so there is no use of this statistic
-SELECT B.institute AS inst, B.programme AS prog, MIN(cat_rank) AS OpR, MAX(cat_rank) AS CR FROM data as A, broken_branches as B WHERE A.category = "ST" AND A.institute = B.institute AND A.programme = B.programme GROUP BY B.institute, B.programme;
+2. SELECT programme, COUNT(*) AS popularity FROM branches  GROUP BY programme  ORDER BY popularity DESC  LIMIT 10; -> there are a lot of branches with occurance close to 1.. some branches are the same but named differently.. so this is a useless query
 """
