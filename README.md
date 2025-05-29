@@ -2,7 +2,8 @@
 
 All this data was already available publicly through the published JIC reports available on the jeeadv website. This is just a more readable form (excel sheets or CSVs).
 
-The goal of the project is to provide all data of the JIC report in a more accessible way to all students in form of an excel spreadsheet which they can utilize make better decisions for the JOSAA councelling 2025 and to also put them in a readable format for those curious about performance statistics.
+The goal of the project is to provide all data of the JIC report in a more accessible way to all students in form of an excel spreadsheet which they can utilize make better decisions for the JOSAA councelling 2025 and to also put them in a readable format for those curious about performance statistics.<br>
+Also for anyone curious, the whole `main.py` has a lot of comments explaining the code and how it works and which decisions were made, so you can also check that out to understand how the data was processed.
 
 
 ## Accessing the Data
@@ -10,6 +11,10 @@ The goal of the project is to provide all data of the JIC report in a more acces
 The Excel sheets and CSV files can be accessed from the `exported_data`  directory in this repository. Simply navigate to the folder and download the required files.
 
 ## About the files
+
+### combined.xlsx
+This file contains all the data from the other files in a single file and also contains some manual fixes to the data (ORCR) which is not present in the other files.<br>
+It is highly recommended to use this file over the others.
 
 ### ORCR.xlsx
  
