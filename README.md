@@ -9,6 +9,7 @@ Also for anyone curious, the whole `main.py` has a lot of comments explaining th
 ## Accessing the Data
 
 The Excel sheets and CSV files can be accessed from the `exported_data`  directory in this repository. Simply navigate to the folder and download the required files.
+It's recommended to download the `combined.xlsx` file present in `exported_data/excel` directory.
 
 ## About the files
 
