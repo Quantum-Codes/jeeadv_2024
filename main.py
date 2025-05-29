@@ -570,28 +570,6 @@ with open("exported_data/csv/choices.csv",'w') as file:
 #"""
 
 """
-# Stats for reddit
-
-# College preference stat (CS Stat in combined.xlsx)
-sql.execute("SELECT institute, programme, duration, chosen FROM branches WHERE programme LIKE \"Computer%\" ORDER BY chosen DESC;")
-data = sql.fetchall()
-with open("stat.csv", "w") as f:
-    writer = csv.writer(f)
-    writer.writerow(["Institute", "programme", "duration", "Choices"])
-    writer.writerows(data)
-
-# Largest rank range
-sql.execute("")
-
-# close the database connection
-db.close()
-"""
-"""
-Rejected queries:
-1. SELECT institute, SUM(chosen) AS chosen FROM branches GROUP BY institute ORDER BY SUM(chosen) DESC; -> this is highly sensitive to number of branches, so there is no use of this statistic
-SELECT B.institute AS inst, B.programme AS prog, MIN(cat_rank) AS OpR, MAX(cat_rank) AS CR FROM data as A, broken_branches as B WHERE A.category = "ST" AND A.institute = B.institute AND A.programme = B.programme GROUP BY B.institute, B.programme;
-"""
-"""
 # Page numbers to process for extracting city data
 page_nos = range(32, 53)  # 53 is the second argument (end of range)
 
@@ -640,3 +618,83 @@ db.commit()
 # now find that in roll number and map all cities - we can do this purely with sql queries
 # UPDATE data AS D JOIN centre_codes AS B ON B.code = SUBSTRING(D.roll, 3, 4) SET D.city = B.city, D.state = B.state;
 #"""
+
+#"""
+# Stats for reddit
+
+# College preference stat (CS Stat in combined.xlsx)
+sql.execute("SELECT institute, programme, duration, chosen FROM branches WHERE programme LIKE \"Computer%\" ORDER BY chosen DESC;")
+data = sql.fetchall()
+with open("exported_data/stats/stat.csv", "w") as f:
+    writer = csv.writer(f)
+    writer.writerow(["Institute", "programme", "duration", "Choices"])
+    writer.writerows(data)
+
+# State wise count of students
+sql.execute("SELECT state, COUNT(*) FROM data GROUP BY state ORDER BY COUNT(*) DESC;")
+data = sql.fetchall()
+with open("exported_data/stats/state_wise_count.csv", "w") as f:
+    writer = csv.writer(f)
+    writer.writerow(["State", "Count"])
+    writer.writerows(data)
+
+#  Institute wise count of students in specific state
+sql.execute("SELECT DISTINCT state FROM centre_codes;")
+states = sql.fetchall()
+
+for state in states:
+    sql.execute("SELECT IFNULL(institute, 'Unalloted'), COUNT(*) FROM data WHERE state = %s GROUP BY institute ORDER BY COUNT(*) DESC;", (state[0],))
+    data = sql.fetchall()
+    with open(f"exported_data/stats/state_wise_institute_count.csv", "a") as f:
+        writer = csv.writer(f)
+        writer.writerow(["Institute", f"{state[0]} students"])
+        writer.writerows(data)
+        writer.writerows(([],[]))
+
+# Institute wise count of students in specific state
+with open("institutes.json", "r") as f:
+    institutes = json.load(f)
+
+for institute in institutes.values():
+    sql.execute("SELECT state, COUNT(*) FROM data WHERE institute = %s GROUP BY state ORDER BY COUNT(*) DESC;", (institute,))
+    data = sql.fetchall()
+    with open(f"exported_data/stats/institute_wise_state_count.csv", "a") as f:
+        writer = csv.writer(f)
+        writer.writerow([institute, "students"])
+        writer.writerows(data)
+        writer.writerows(([],[]))
+
+# allotment percentage by state
+sql.execute("SELECT state, COUNT(*) FROM data WHERE institute IS NOT NULL GROUP BY state ORDER BY state DESC;")
+data1 = sql.fetchall()
+sql.execute("SELECT state, COUNT(*) FROM data GROUP BY state ORDER BY state DESC;")
+data2 = sql.fetchall()
+with open("exported_data/stats/state_wise_allotment_percentage.csv", "w") as f:
+    writer = csv.writer(f)
+    writer.writerow(["State", "Alloted Students"])
+    for i in range(len(data2)):
+        if i>=len(data1):
+            item = [(data2[i][0]),0.0] #If nobody in that state was alloted in iit then data1 won't have its entry and len(data1)<len(data2)
+        else:
+            item = [(data1[i][0]),int((data1[i][1]*100/data2[i][1])*100)/100]  #int(item*100)/100 produces 2 decimal places instead of >2
+        print(item)
+        writer.writerow(item)
+
+#  Institute choice of foreign students (UAE and nepal)
+sql.execute("SELECT IFNULL(institute, 'Unalloted'), COUNT(*) FROM data WHERE state IN ('UAE', 'Nepal') GROUP BY institute ORDER BY COUNT(*) DESC;")
+data = sql.fetchall()
+with open(f"exported_data/stats/foreign_students_choice.csv", "a") as f:
+    writer = csv.writer(f)
+    writer.writerow(["Institute", f"Foreign Students"])
+    writer.writerows(data)
+    writer.writerows(([],[]))
+
+
+# close the database connection
+db.close()
+#"""
+"""
+Rejected stats queries:
+1. SELECT institute, SUM(chosen) AS chosen FROM branches GROUP BY institute ORDER BY SUM(chosen) DESC; -> this is highly sensitive to number of branches, so there is no use of this statistic
+SELECT B.institute AS inst, B.programme AS prog, MIN(cat_rank) AS OpR, MAX(cat_rank) AS CR FROM data as A, broken_branches as B WHERE A.category = "ST" AND A.institute = B.institute AND A.programme = B.programme GROUP BY B.institute, B.programme;
+"""
