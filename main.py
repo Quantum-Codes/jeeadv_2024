@@ -58,7 +58,7 @@ reader = PdfReader("JIC 2024.pdf")
 number_of_pages = len(reader.pages)
 
 
-#"""
+"""
 # Roll vs CRL
 page_nos = range(53, 212) # until and including AAT text
 page_content = []
@@ -208,7 +208,7 @@ db.commit()
 
 
 
-#"""
+"""
 # CRL vs Marks
 page_nos = range(18, 21)
 page_content = []
@@ -268,7 +268,7 @@ db.commit()
 
 
 
-#"""
+"""
 # the following data in json files were not scraped. just the table was copy pasted into chatgpt as text and converted to json
 with open("institutes.json", "r") as f:
     institutes = json.load(f)
@@ -397,7 +397,7 @@ db.commit()
 
 
 
-#"""
+"""
 # choice count
 
 # take data of code - name
@@ -448,7 +448,7 @@ db.commit()
 
 
 
-#"""
+"""
 # getting Opening and Closing ranks
 page_nos = range(455, 595) #last page 455,595 (2nd argument)
 page_content = []
@@ -551,7 +551,7 @@ db.close()
 
 
 
-#"""
+"""
 # Writing ORCR data to CSV file
 
 # get data
@@ -597,6 +597,10 @@ page_nos = range(32, 53)  # 53 is the second argument (end of range)
 # Load city data from JSON file
 with open("cities.json", "r") as file: 
     city_data = json.load(file)  # Load JSON file containing city names
+with open("institutes.json", "r") as file: 
+    institutes = json.load(file)
+    # IIT Bbs always appears as IITBhubaneswar, so we update it
+    institutes["101"] = "IITBhubaneswar"
 cities = city_data.keys() # Extract the list of cities
 
 # Initialize a list to store processed page content
@@ -626,13 +630,20 @@ for line in page_content:
         continue
         
     center_code = line.split()[0]  # Extract the center code (first word in the line)
+    for insti in institutes.values():
+        if insti in line:
+            line = line.replace(insti,"")
+    print(line)
     for city in cities:  # Check if any city name is present in the line
-        if city.lower().replace("-","") in line.lower().replace("-",""):  # Case-insensitive match, ignoring hyphens
+        if city.lower().replace("-","") in line.lower().replace("-",""): # Case-insensitive match, ignoring hyphens
+            
             city_dir[center_code] = (city, city_data[city])  # Map the center code to the city name and state
+            break
+    print("DETECTED AS:", city_dir[center_code]) # this errors if city not in city.json
 
 # Print the mapping of center codes to city names and save
 for key, value in city_dir.items():
-    print(key, value)
+    #print(key, value)
     sql.execute("INSERT INTO centre_codes (code, city, state) VALUES (%s, %s, %s);", (key, value[0], value[1]))  # Insert the center code, city name, and state into the database
 
 db.commit()
@@ -640,7 +651,7 @@ db.commit()
 # UPDATE data AS D JOIN centre_codes AS B ON B.code = SUBSTRING(D.roll, 3, 4) SET D.city = B.city, D.state = B.state;
 #"""
 
-#"""
+"""
 # Stats for reddit
 
 # College preference stat (CS Stat in combined.xlsx)
