@@ -58,7 +58,7 @@ reader = PdfReader("JIC 2024.pdf")
 number_of_pages = len(reader.pages)
 
 
-"""
+#"""
 # Roll vs CRL
 page_nos = range(53, 212) # until and including AAT text
 page_content = []
@@ -208,7 +208,7 @@ db.commit()
 
 
 
-"""
+#"""
 # CRL vs Marks
 page_nos = range(18, 21)
 page_content = []
@@ -268,7 +268,7 @@ db.commit()
 
 
 
-"""
+#"""
 # the following data in json files were not scraped. just the table was copy pasted into chatgpt as text and converted to json
 with open("institutes.json", "r") as f:
     institutes = json.load(f)
@@ -397,7 +397,7 @@ db.commit()
 
 
 
-"""
+#"""
 # choice count
 
 # take data of code - name
@@ -448,7 +448,7 @@ db.commit()
 
 
 
-"""
+#"""
 # getting Opening and Closing ranks
 page_nos = range(455, 595) #last page 455,595 (2nd argument)
 page_content = []
@@ -590,7 +590,7 @@ with open("exported_data/csv/choices.csv",'w') as file:
 
 
 
-"""
+#"""
 # Page numbers to process for extracting city data
 page_nos = range(32, 53)  # 53 is the second argument (end of range)
 
@@ -624,13 +624,16 @@ for i in page_nos:
         else:
             fixed_line += line  # Append the current line to the accumulated line
 
+# btw the following code is not a good way of detecting cities. if you are making your own version then DO NOT use this method. there are a lot of problems like:
+# "patna" in "vishakhapatnam" is true so if program tests for "patna" before "vishakhapatnam" then it returns wrong output. so in cities.json, vishakhapatnam is placed above patna. 
+# also dicts are supposed to be unordered even after reading from files but after testing i see order is preserved :/ this script relies on that ordering (which is bad)
 city_dir = {} 
 for line in page_content:
     if line.strip() == "":  # Skip empty lines
         continue
         
     center_code = line.split()[0]  # Extract the center code (first word in the line)
-    for insti in institutes.values():
+    for insti in institutes.values(): # remove institute name because it also contains city names
         if insti in line:
             line = line.replace(insti,"")
     print(line)
@@ -651,7 +654,7 @@ db.commit()
 # UPDATE data AS D JOIN centre_codes AS B ON B.code = SUBSTRING(D.roll, 3, 4) SET D.city = B.city, D.state = B.state;
 #"""
 
-"""
+#"""
 # Stats for reddit
 
 # College preference stat (CS Stat in combined.xlsx)
