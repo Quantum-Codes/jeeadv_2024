@@ -551,7 +551,7 @@ db.close()
 
 
 
-"""
+#"""
 # Writing ORCR data to CSV file
 
 # get data
@@ -590,7 +590,7 @@ with open("exported_data/csv/choices.csv",'w') as file:
 
 
 
-#"""
+"""
 # Page numbers to process for extracting city data
 page_nos = range(32, 53)  # 53 is the second argument (end of range)
 
