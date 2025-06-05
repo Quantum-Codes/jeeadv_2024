@@ -3,6 +3,7 @@ import mysql.connector, dotenv, os, json, csv
 
 # every scraping module has its own section in the code, enclosed by """ and #""" (this was built like jyupiter notebook; running cells one by one)
 # also note that some of the variable names might be misleading (they were made for a purpose but now have a different purpose in different modules)
+# the data for nits, iiits and gftis are generated from a webscraper in webscraper.py.
 """
 Table def:
 CREATE TABLE data (
