@@ -2,6 +2,7 @@ import requests, os
 from bs4 import BeautifulSoup
 import pandas as pd
 
+# this file is used to scrape the opening and closing ranks of JOSAA 2024 website to also get NIT, IIIT, GFTI's opening and closing ranks
 
 # get params
 session = requests.Session()
@@ -20,7 +21,7 @@ field_data = ( # like immutable dict so order is preserved
     ("ctl00$ContentPlaceHolder1$btnSubmit", "Submit")
 )
 
-# the following code was converted to a recursive function
+# the following code was converted to a recursive function. kept it here to come back to try to rewrite to use loops
 # post_data = hidden_params.copy()
 # for i in range(len(field_data)):
 #     field, data = field_data[i]
@@ -40,6 +41,8 @@ field_data = ( # like immutable dict so order is preserved
 #     hidden_params = {item["name"]: item.get("value", "") for item in soup.find_all("input", {"type": "hidden"})}
 #     post_data.update(hidden_params)
 
+
+# as it turns out, this is a dfs algorithm lmao (really gotta start DSA soon, i couldve made this a lot faster if i knew it and didnt rediscover the wheel)
 def explore_field(index, post_data):
     field, data = field_data[index]
     print(f"Exploring field: {field}, data: {data}, index: {index}")
