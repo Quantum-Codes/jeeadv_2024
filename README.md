@@ -1,28 +1,30 @@
-# JEE 2024 JOSAA dataset
+# 🚀 JEE 2024 JOSAA dataset
 
-All this data was already available publicly through the published JIC reports available on the jeeadv website and also the JoSAA website. This is just a more readable form (excel sheets or CSVs).
+Welcome to the JEE 2024 JoSAA dataset! This project aims to make the publicly available JoSAA and JEE Advanced data more accessible and understandable for students participating in future counseling sessions (JoSAA 2025 onwards).
 
-**This dataset contains:**
-1. Opening and closing ranks of all institutes.
-2. Seat matrix of all institutes.
-3. Data of allotment to IITs of each student who got a seat in IIT.
-4. Some statistics derived from this data
+While all this data was already available publicly through official JIC reports on the JEE Advanced website and the JoSAA website, we've transformed it into easy-to-use Excel sheets and CSVs. This allows you to analyze the data more efficiently and make informed decisions during your counseling process.
 
-The goal of the project is to provide all data of the JIC report and JoSAA opening closing ranks in a more accessible way to all students in form of an excel spreadsheet which they can utilize make better decisions for the JOSAA councelling 2025+ and to also put them in a readable format for those curious about performance statistics.
+## ✨ What's Inside This Dataset?
+1. **Opening and Closing Ranks**: Detailed rank data for all participating institutes (IITs, NITs, IIITs, GFTIs).
+2. **Seat Matrix**: A clear breakdown of available seats across all institutes and categories.
+3. **IIT Allotment Data**: Insights into the academic programs and ranks of students allotted seats in IITs.
+4. **JoSAA choice count**: A count on how many people put a branch of an IIT in their priority order.
+5. **Derived Statistics**: Various statistics generated from the raw data to provide deeper insights into performance and trends.
 
-Also for anyone curious, the whole `main.py`, `webscraper.py` and `seat_matrix.py` has a lot of comments explaining the code and how it works and which decisions were made, so you can also check that out to understand how the data was processed.<br>
+## 📊 How Was This Data Processed?
+For those interested in the technical details, the entire codebase (specifically `main.py`, `webscraper.py`, and `seat_matrix.py`) is heavily commented in a beginner friendly manner. You can explore these files to understand the data processing, web scraping techniques, and the decisions made during data transformation.<br>
 The data for NITs, IIITs and GFTIs are webscraped from the JOSAA website using `requests` and `BeautifulSoup` libraries, while the IIT data is taken from the JIC report available on the jeeadv website. Webscraping script is at `webscraper.py` and `seat_matrix.py`.<br>
 
 
 
-## Accessing the Data
+## 📂 Accessing the Data
 
 The Excel sheets and CSV files can be accessed from the `exported_data`  directory in this repository. Simply navigate to the folder and download the required files.
-It's recommended to download the `combined.xlsx` file present in `exported_data/excel` directory.
+> ⚠️ It's recommended to download the `combined.xlsx` file present in `exported_data/excel` directory.
 
-## About the files
+## 📋 About the files
 
-### combined.xlsx
+### combined.xlsx  (The only file most need!)
 This file contains all the data from the other files in a single file and also contains some manual fixes to the data (ORCR) which is not present in the other files.<br>
 It is highly recommended to use this file over the others.
 
