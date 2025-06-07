@@ -1,10 +1,10 @@
-# 🚀 JEE 2024 JOSAA dataset
+# ☢️ JEE 2024 JOSAA dataset
 
 Welcome to the JEE 2024 JoSAA dataset! This project aims to make the publicly available JoSAA and JEE Advanced data more accessible and understandable for students participating in future counseling sessions (JoSAA 2025 onwards).
 
 While all this data was already available publicly through official JIC reports on the JEE Advanced website and the JoSAA website, we've transformed it into easy-to-use Excel sheets and CSVs. This allows you to analyze the data more efficiently and make informed decisions during your counseling process.
 
-## ✨ What's Inside This Dataset?
+## 🔬 What's Inside This Dataset?
 1. **Opening and Closing Ranks**: Detailed rank data for all participating institutes (IITs, NITs, IIITs, GFTIs).
 2. **Seat Matrix**: A clear breakdown of available seats across all institutes and categories.
 3. **IIT Allotment Data**: Insights into the academic programs and ranks of students allotted seats in IITs.
