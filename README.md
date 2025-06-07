@@ -26,8 +26,8 @@ The Excel sheets and CSV files can be accessed from the `exported_data`  directo
 
 ### combined.xlsx  (The only file most need!)
 This file contains all the data from the other files in a single file and also contains some manual fixes to the data (ORCR) which is not present in the other files.<br>
-It is highly recommended to use this file over the others.
-
+It is highly recommended to use this file over the others.<br>
+Also available as a [google sheet](https://docs.google.com/spreadsheets/d/1ez1bSFRGYce8Dr5TDo__EJHnm9NkGhE0/edit?usp=sharing&ouid=107837900740285460736&rtpof=true&sd=true)
 ### ORCR.xlsx
  
 ORCR is an acronym for "Opening Ranks and Closing Ranks". It consists of the opening and closing ranks for each course offered by every IIT.<br>
