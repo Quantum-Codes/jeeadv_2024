@@ -9,13 +9,14 @@ res = session.get("https://josaa.admissions.nic.in/applicant/seatmatrix/seatmatr
 soup = BeautifulSoup(res.text,'html.parser')
 data = {item["name"]:item.get("value","") for item in soup.find_all("input",{"type":"hidden"})}
 
-
+# contains non hidden input fields to be filled. kept in a list for easier access
 fields=[
 "ctl00$ContentPlaceHolder1$ddlInstType",
 "ctl00$ContentPlaceHolder1$ddlInstitute",
 "ctl00$ContentPlaceHolder1$ddlBranch",
 "ctl00$ContentPlaceHolder1$btnSubmit"]
 
+#As this only contains just 3 select inputs, looping is sufficient 
 inst_type = [item["value"] for item in soup.find("select",{"name":"ctl00$ContentPlaceHolder1$ddlInstType"}).find_all("option")][1:]
 for type in inst_type:
     #find list of institutes
@@ -28,7 +29,7 @@ for type in inst_type:
 
     for institute in institutes:
         #find list of branches
-        data.update({item["name"]:item.get("value","") for item in soup.find_all("input",{"type":"hidden"})})
+        data.update({item["name"]:item.get("value","") for item in soup.find_all("input",{"type":"hidden"})}) #updating to not lose the branch type
         data[fields[1]] = institute
         data["__EVENTTARGET"] = fields[1]
         res = session.post("https://josaa.admissions.nic.in/applicant/seatmatrix/seatmatrixinfo.aspx",data = data)
@@ -60,17 +61,17 @@ for type in inst_type:
 
 #put a separate file for total seats and programme specific seats to make it easy to navigate and make tables(excel)
 with open("seat_matrix_25.csv","r") as file_1, open("total_seats.csv","w") as file_2, open("programme.csv","w") as file_3:
-    csv_reader = csv.reader(file_1)
+    csv_reader = csv.reader(file_1) #this consists of both programme specific and total seats which has to be separated
     csv_writer1 = csv.writer(file_2)
     csv_writer2 = csv.writer(file_3)
     prev_row = []
     for row in csv_reader:
-        if row[0] == "":
-            new_row = [prev_row[0]]
+        if row[0] == "": #total seat lines stores nothing in their first item
+            new_row = [prev_row[0]] #add institute in the first item by taking it from previous row
             new_row.extend(row[3:])
             csv_writer1.writerow(new_row)
         else:
-            csv_writer2.writerow(row)
+            csv_writer2.writerow(row) #this writes the programme specific branches
         prev_row = row
         
 

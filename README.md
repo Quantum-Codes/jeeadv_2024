@@ -4,8 +4,8 @@ All this data was already available publicly through the published JIC reports a
 
 The goal of the project is to provide all data of the JIC report and JoSAA opening closing ranks in a more accessible way to all students in form of an excel spreadsheet which they can utilize make better decisions for the JOSAA councelling 2025+ and to also put them in a readable format for those curious about performance statistics.
 
-Also for anyone curious, the whole `main.py` and `webscraper.py` has a lot of comments explaining the code and how it works and which decisions were made, so you can also check that out to understand how the data was processed.<br>
-The data for NITs, IIITs and GFTIs are webscraped from the JOSAA website using `requests` and `BeautifulSoup` libraries, while the IIT data is taken from the JIC report available on the jeeadv website. Webscraping script is at `webscraper.py` and can be modified a bit to even scrape Seat matrix too!<br>
+Also for anyone curious, the whole `main.py`, `webscraper.py` and `seat_matrix.py` has a lot of comments explaining the code and how it works and which decisions were made, so you can also check that out to understand how the data was processed.<br>
+The data for NITs, IIITs and GFTIs are webscraped from the JOSAA website using `requests` and `BeautifulSoup` libraries, while the IIT data is taken from the JIC report available on the jeeadv website. Webscraping script is at `webscraper.py` and `seat_matrix.py`.<br>
 
 
 
@@ -44,6 +44,10 @@ To avoid any confusions; CRL stands for "Common Rank Lists" and displays your st
 
 
 Note that the marks are "approx" as JIC report does have the marks but are not individually mapped to each roll number, instead the marks are mapped to groups of 100 ranks making it slightly inaccurate. The marks would be slightly off for few candidates but correct for most.
+
+### seat_matrix.xlsx
+
+It consists of the number of seats offered by an institute for every category for a given academic programme as well as the total seats available in that institute. 
 
 
 
