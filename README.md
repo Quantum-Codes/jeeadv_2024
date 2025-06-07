@@ -2,6 +2,12 @@
 
 All this data was already available publicly through the published JIC reports available on the jeeadv website and also the JoSAA website. This is just a more readable form (excel sheets or CSVs).
 
+**This dataset contains:**
+1. Opening and closing ranks of all institutes.
+2. Seat matrix of all institutes.
+3. Data of allotment to IITs of each student who got a seat in IIT.
+4. Some statistics derived from this data
+
 The goal of the project is to provide all data of the JIC report and JoSAA opening closing ranks in a more accessible way to all students in form of an excel spreadsheet which they can utilize make better decisions for the JOSAA councelling 2025+ and to also put them in a readable format for those curious about performance statistics.
 
 Also for anyone curious, the whole `main.py`, `webscraper.py` and `seat_matrix.py` has a lot of comments explaining the code and how it works and which decisions were made, so you can also check that out to understand how the data was processed.<br>
@@ -47,7 +53,7 @@ Note that the marks are "approx" as JIC report does have the marks but are not i
 
 ### seat_matrix.xlsx
 
-It consists of the number of seats offered by an institute for every category for a given academic programme as well as the total seats available in that institute. 
+It consists of the number of seats offered by an institute for every category for a given academic programme as well as the total seats available in that institute.
 
 
 

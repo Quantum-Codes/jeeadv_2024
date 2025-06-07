@@ -6,3 +6,5 @@ In `allotment.xlsx`, the marks column is actually the predicted marks since the 
 So top 10 people's marks are added manually since they were readily available and others are predicted.
 
 Due to the nature of this grouping (uniform groups) and the normal distribution of marks, people close to the median have accurate marks and people scoring very high or very low have marks that are slightly inaccurate. 
+
+`seat_matrix_25.xlsx` is a combination of `../csv/seat_matrix_25.csv` and `../csv/total_seats.xlsx`.

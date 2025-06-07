@@ -4,6 +4,8 @@ import pandas as pd
 from io import StringIO
 import csv
 
+# better to read webscraper.py before this
+
 session = requests.Session()
 res = session.get("https://josaa.admissions.nic.in/applicant/seatmatrix/seatmatrixinfo.aspx")
 soup = BeautifulSoup(res.text,'html.parser')

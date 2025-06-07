@@ -1,5 +1,6 @@
 import requests, os, time
 from bs4 import BeautifulSoup
+from io import StringIO
 import pandas as pd
 
 # this file is used to scrape the opening and closing ranks of JOSAA 2024 website to also get NIT, IIIT, GFTI's opening and closing ranks
@@ -72,7 +73,7 @@ def explore_field(index, post_data):
     
     if index == len(field_data) - 1:  # if we have reached the last field, return
         table = soup.find("table")
-        table = pd.read_html(str(table))[0]
+        table = pd.read_html(StringIO(str(table)))[0]
         # delete last row from the table if it is empty
         table.dropna(inplace=True, how='all')
         with open('exported_data/csv/josaa24.csv', 'a', encoding='utf-8') as f:
